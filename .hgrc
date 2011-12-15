@@ -1,0 +1,29 @@
+[ui]
+username = Brad Montgomery <brad@bradmontgomery.net>
+editor = vim
+verbose = True
+merge = diffmerge
+
+[diff]
+git = True
+
+[extensions]
+hgext.graphlog = 
+progress =
+color =
+hgext.extdiff =
+hgext.churn=
+
+[progress]
+delay = 1.5
+
+[extdiff]
+cmd.diffmerge = /usr/local/bin/diffmerge
+
+[merge-tools]
+diffmerge.executable = /usr/local/bin/diffmerge
+diffmerge.args = --result=$output -t1="Local Version" -t2=$output -t3="Other Version" --caption=$output $local $base $other
+diffmerge.binary = False
+diffmerge.symlinks = False
+diffmerge.gui = True
+diffmerge.premerge = True

@@ -1,0 +1,10 @@
+au BufNewFile,BufRead *.rst set syntax=rest
+au BufNewFile,BufRead ~/django_projects/de_concierge/apache/*wsgi setf python
+au BufNewFile,BufRead ~/django_projects/de_concierge/apache/* setf apache 
+au BufNewFile,BufRead ~/django_projects/southwest_scoop/apache_mod_wsgi_conf/*wsgi setf python
+au BufNewFile,BufRead ~/django_projects/southwest_scoop/apache_mod_wsgi_conf/* setf apache 
+au BufNewFile,BufRead ~/django_projects/representproject/apache/*conf setf apache 
+au BufNewFile,BufRead ~/django_projects/representproject/apache/sites-available/* setf apache 
+au BufNewFile,BufRead ~/django_projects/representproject/apache/*wsgi setf python
+au BufNewFile,BufRead ~/django_projects/workforpie/nginx/*conf setf nginx
+au BufNewFile,BufRead ~/django_projects/workforpie/nginx/* setf nginx

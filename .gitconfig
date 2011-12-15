@@ -1,0 +1,21 @@
+[user]
+    name = Brad Montgomery
+    email = brad@bradmontgomery.net
+[github]
+    user = bradmontgomery
+    token = REALTOKENHERE
+[core]
+    autocrlf = input
+    safecrlf = true
+    editor = vim
+[alias]
+    co = checkout
+    ci = commit
+    st = status
+    stat = status
+    br = branch 
+    hist = log --pretty=format:\"%Cred%h %Creset%ad | %s%Cgreen%d %Cblue[%an]%Creset\" --graph --date=short
+    type = cat-file -t
+    dump = cat-file -p
+    diff = diff --color
+    dif = diff --color
