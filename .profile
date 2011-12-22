@@ -1,5 +1,6 @@
-# Extra junk & MySQL
+# MySQL Junk
 PATH=/usr/local/bin:/usr/local/mysql/bin:/usr/local/sbin:$PATH
+export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 #PS1="\H:\w$ "
 PS1=".../\W $ "
