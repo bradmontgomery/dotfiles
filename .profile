@@ -66,5 +66,5 @@ alias email='python -m smtpd -n -c DebuggingServer localhost:1025'
 alias serve='python -m SimpleHTTPServer'
 alias rmpyc='find ./ -type f -name "*.pyc" -exec rm {} \;'
 
-# Pure Awesome
+# Pure Awesome. (brew install sox to get the play command)
 alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25  fade h 1 864000 1"
