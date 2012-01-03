@@ -69,3 +69,6 @@ alias rmpyc='find ./ -type f -name "*.pyc" -exec rm {} \;'
 
 # Pure Awesome. (brew install sox to get the play command)
 alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25  fade h 1 864000 1"
+
+# RVM
+[[ -s "/Users/brad/.rvm/scripts/rvm" ]] && source "/Users/brad/.rvm/scripts/rvm"
