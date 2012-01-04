@@ -73,4 +73,4 @@ alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 ga
 
 # RVM and rvm bash completion
 [[ -s "/Users/brad/.rvm/scripts/rvm" ]] && source "/Users/brad/.rvm/scripts/rvm"
-[[ -r $rvm_path/scripts/completion ]] && . $rvmpath/scripts/completion
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
