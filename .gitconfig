@@ -8,6 +8,7 @@
     autocrlf = input
     safecrlf = true
     editor = vim
+    excludesfile = /Users/brad/.gitignore_global
 [alias]
     co = checkout
     ci = commit
