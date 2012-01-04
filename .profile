@@ -61,6 +61,7 @@ alias ll='ls -lhG'
 alias la='ls -ahG'
 alias top=htop
 alias get=git
+alias knive=knife
 
 # Nifty Python Aliases
 alias email='python -m smtpd -n -c DebuggingServer localhost:1025'
