@@ -3,7 +3,7 @@ PATH=/usr/local/bin:/usr/local/mysql/bin:/usr/local/sbin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 #PS1="\H:\w$ "
-PS1=".../\W $ "
+PS1="../\W $ "
 # OpenCV libraries
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/sw/lib
 #export PKG_CONFIG_PATH=$PKG_CONFIG_PAGH:/usr/local/lib/pkgconfig
@@ -74,3 +74,6 @@ alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 ga
 # RVM and rvm bash completion
 [[ -s "/Users/brad/.rvm/scripts/rvm" ]] && source "/Users/brad/.rvm/scripts/rvm"
 [[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
+# Add the current ruby to the prompt
+RVM_INFO="\$($HOME/.rvm/bin/rvm-prompt i v p g)"
+PS1="($RVM_INFO) $PS1"
