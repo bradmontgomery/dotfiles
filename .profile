@@ -77,3 +77,9 @@ alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 ga
 # Add the current ruby to the prompt
 RVM_INFO="\$($HOME/.rvm/bin/rvm-prompt i v p g)"
 PS1="($RVM_INFO) $PS1"
+
+# Opscode/Chef stuff
+export OPSCODE_ORGNAME="coroutine"
+export OPSCODE_USER="bkmontgomery"
+
+
