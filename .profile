@@ -81,5 +81,11 @@ PS1="($RVM_INFO) $PS1"
 # Opscode/Chef stuff
 export OPSCODE_ORGNAME="coroutine"
 export OPSCODE_USER="bkmontgomery"
-
-alias kniferack="knife rackspace server create -N $1 -S $1 -x root -P password -r 'role[rails_stack]' -I 112 -f 1"
+# save me some typing when creating intances at rackspace
+function kniferack
+{
+    echo 
+    echo "Running: knife rackspace server create -N $1 -S $1 -x root -P password -r \"role[rails_stack]\" -I 112 -f 1"
+    echo 
+    knife rackspace server create -N $1 -S $1 -x root -P password -r "role[rails_stack]" -I 112 -f 1
+}
