@@ -82,4 +82,4 @@ PS1="($RVM_INFO) $PS1"
 export OPSCODE_ORGNAME="coroutine"
 export OPSCODE_USER="bkmontgomery"
 
-
+alias kniferack="knife rackspace server create -N $1 -S $1 -x root -P password -r 'role[rails_stack]' -I 112 -f 1"
