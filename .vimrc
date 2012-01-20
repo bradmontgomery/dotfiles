@@ -32,3 +32,4 @@ colorscheme desert256
 " File-specific indentation rules
 " From: http://vim.wikia.com/wiki/Indenting_source_code
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
+autocmd FileType cucumber setlocal shiftwidth=2 tabstop=2
