@@ -20,6 +20,7 @@ nmap \ :noh
 nmap = za
 nmap - zc
 map ,p <Esc>:set paste<CR>
+map ,[ <Esc>:set nopaste<CR>
 
 au BufRead,BufNewFile *.json set filetype=json
 "au! Syntax json source /Users/oldbrad/.vim/ftplugin/json.vim
