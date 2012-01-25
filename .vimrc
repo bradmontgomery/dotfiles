@@ -1,5 +1,5 @@
 filetype on
-filetype plugin indent on
+filetype plugin on
 syntax on
 
 " turn off annoying bracket matcher
