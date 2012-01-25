@@ -55,6 +55,32 @@ encrypt()
     openssl des3 -salt -in $1 -out $2
 }
 
+# Git shortcuts
+pull() 
+{
+    CURRENT=`git branch | grep '\*' | awk '{print $2}'`
+    REMOTE=${CURRENT%-dev}
+
+    echo "--- do you want to do this? ---"
+    echo "git checkout ${REMOTE}"
+    echo "git pull origin ${REMOTE}"
+    echo "git checkout ${CURRENT}"
+    echo "git rebase ${REMOTE}"
+    echo "-------------------------------"
+}
+push()
+{
+    CURRENT=`git branch | grep '\*' | awk '{print $2}'`
+    REMOTE=${CURRENT%-dev}
+
+    echo "--- do you want to do this? ---"
+    echo "git checkout ${REMOTE}"
+    echo "git merge ${CURRENT}"
+    echo "git push origin ${REMOTE}"
+    echo "git checkout ${CURRENT}"
+    echo "-------------------------------"
+}
+
 # Aliases
 alias ls='ls -G'
 alias ll='ls -lhG'
