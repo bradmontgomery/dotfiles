@@ -37,3 +37,9 @@ autocmd FileType cucumber setlocal shiftwidth=2 tabstop=2
 
 " Pathogen: https://github.com/tpope/vim-pathogen
 call pathogen#infect()
+
+" NERDtree tweeks
+autocmd vimenter * NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
