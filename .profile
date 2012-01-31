@@ -112,7 +112,7 @@ export OPSCODE_USER="bkmontgomery"
 function kniferack
 {
     if [ -z "$1" ] || [ -z "$2" ]; then 
-        echo "USAGE: kniferack <hostname> <role/recipe list>"
+        echo "USAGE: kniferack <hostname> \"<role/recipe list>\""
     else
         hostname=$1
         roles_and_recipes=$2
