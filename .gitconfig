@@ -18,5 +18,4 @@
     hist = log --pretty=format:\"%Cred%h %Creset%ad | %s%Cgreen%d %Cblue[%an]%Creset\" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
-    diff = diff --color
     dif = diff --color
