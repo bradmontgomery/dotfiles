@@ -4,7 +4,7 @@ syntax on
 
 " turn off annoying bracket matcher
 let loaded_matchparen=1
-
+let mapleader=","
 set autoindent
 set expandtab
 set foldmethod=marker
