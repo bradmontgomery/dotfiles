@@ -15,6 +15,7 @@ set showmatch
 set tabstop=4
 set nu
 set nospell
+set ruler
 
 nmap \ :noh
 nmap = za
