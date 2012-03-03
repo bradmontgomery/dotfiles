@@ -1,5 +1,6 @@
 au BufNewFile,BufRead *.rst set syntax=rest
 au BufNewFile,BufRead *.md set syntax=mkd
+au BufNewFile,BufRead ~/coroutine/chef-coroutine/Vagrantfile setf ruby
 au BufNewFile,BufRead ~/django/de_concierge/apache/*wsgi setf python
 au BufNewFile,BufRead ~/django/de_concierge/apache/* setf apache 
 au BufNewFile,BufRead ~/django/southwest_scoop/apache_mod_wsgi_conf/*wsgi setf python
