@@ -108,18 +108,3 @@ PS1="($RVM_INFO) $PS1"
 # Opscode/Chef stuff
 export OPSCODE_ORGNAME="coroutine"
 export OPSCODE_USER="bkmontgomery"
-# save me some typing when creating intances at rackspace
-function kniferack
-{
-    if [ -z "$1" ] || [ -z "$2" ]; then 
-        echo "USAGE: kniferack <hostname> \"<role/recipe list>\""
-    else
-        hostname=$1
-        roles_and_recipes=$2
-        echo 
-        echo "Running Command:
-        knife rackspace server create -N $hostname -S $hostname -x root -r \"$roles_and_recipes\" -I 112 -f 1"
-        echo '--------------------------------------'
-        knife rackspace server create -N $hostname -S $hostname -x root -r "$roles_and_recipes" -I 112 -f 1
-    fi
-}
