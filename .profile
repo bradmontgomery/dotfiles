@@ -88,6 +88,7 @@ alias la='ls -ahG'
 alias top=htop
 alias get=git
 alias knive=knife
+alias VAGRANTDESTROY='vagrant destroy'
 
 # Nifty Python Aliases
 alias email='python -m smtpd -n -c DebuggingServer localhost:1025'
@@ -108,3 +109,4 @@ PS1="($RVM_INFO) $PS1"
 # Opscode/Chef stuff
 export OPSCODE_ORGNAME="coroutine"
 export OPSCODE_USER="bkmontgomery"
+source ~/coroutine/chef-coroutine/scripts/bash_shortcuts.sh
