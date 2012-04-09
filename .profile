@@ -109,4 +109,3 @@ PS1="($RVM_INFO) $PS1"
 # Opscode/Chef stuff
 export OPSCODE_ORGNAME="coroutine"
 export OPSCODE_USER="bkmontgomery"
-source ~/coroutine/chef-coroutine/scripts/bash_shortcuts.sh
