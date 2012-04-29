@@ -16,6 +16,7 @@ set tabstop=4
 set nu
 set nospell
 set ruler
+"set colorcolumn=80 "bright vertical red line at col 80
 
 nmap \ :noh
 nmap = za
@@ -23,6 +24,7 @@ nmap - zc
 map ,p <Esc>:set paste<CR>
 map ,[ <Esc>:set nopaste<CR>
 
+au BufRead,BufNewFile *.md set filetype=mkd
 au BufRead,BufNewFile *.json set filetype=json
 "au! Syntax json source /Users/oldbrad/.vim/ftplugin/json.vim
 
@@ -44,3 +46,6 @@ autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Highlight text whose length is over 80 columns
+highlight OverLength ctermbg=17 ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
