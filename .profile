@@ -1,3 +1,9 @@
+#PS1="\H:\w$ "
+PS1="../\W $ "
+
+# Node stuff
+export NODE_PATH="/usr/local/lib/node_modules"
+
 # MySQL Junk
 PATH=/usr/local/bin:/usr/local/mysql/bin:/usr/local/sbin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
@@ -5,8 +11,6 @@ export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 # Make Haskell's stuff available
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
-#PS1="\H:\w$ "
-PS1="../\W $ "
 # OpenCV libraries
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/sw/lib
 #export PKG_CONFIG_PATH=$PKG_CONFIG_PAGH:/usr/local/lib/pkgconfig
