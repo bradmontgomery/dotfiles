@@ -38,6 +38,7 @@ colorscheme desert256
 " From: http://vim.wikia.com/wiki/Indenting_source_code
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType cucumber setlocal shiftwidth=2 tabstop=2
+autocmd FileType less setlocal shiftwidth=2 tabstop=2
 
 " Pathogen: https://github.com/tpope/vim-pathogen
 call pathogen#infect()
