@@ -27,6 +27,7 @@ map ,[ <Esc>:set nopaste<CR>
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.md set filetype=mkd
 au BufRead,BufNewFile *.json set filetype=json
+au BufNewFile,BufRead *.less set filetype=less
 
 " Pretty color schemes with iTerm2
 " From: http://kevin.colyar.net/2011/01/pretty-vim-color-schemes-in-iterm2/
