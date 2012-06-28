@@ -16,7 +16,7 @@ set tabstop=4
 set nu
 set nospell
 set ruler
-"set colorcolumn=80 "bright vertical red line at col 80
+set guifont=Monaco:h13
 
 nmap \ :noh
 nmap = za
@@ -49,5 +49,7 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Highlight text whose length is over 80 columns
+set colorcolumn=80 "bright vertical red line at col 80
+highlight ColorColumn ctermbg=darkred guibg=#001100 "sets column color
 highlight OverLength ctermbg=17 ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
