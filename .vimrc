@@ -16,7 +16,8 @@ set tabstop=4
 set nu
 set nospell
 set ruler
-set guifont=Monaco:h13
+"set guifont=Monaco:h13
+set guifont=Ubuntu\ Mono:h18
 
 nmap \ :noh
 nmap = za
