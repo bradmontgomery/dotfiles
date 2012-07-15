@@ -49,6 +49,10 @@ autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+" Flake8 settings
+autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
+let g:flake8_cmd="/Users/brad/.virtualenvs/flake8/bin/flake8"
+
 " Highlight text whose length is over 80 columns
 set colorcolumn=80 "bright vertical red line at col 80
 highlight ColorColumn ctermbg=darkred guibg=#001100 "sets column color
