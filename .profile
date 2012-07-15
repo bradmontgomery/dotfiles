@@ -98,6 +98,7 @@ alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 
 # Nifty Python Aliases
+alias nosetests="nosetests --with-yanc"
 alias email='python -m smtpd -n -c DebuggingServer localhost:1025'
 alias serve='python -m SimpleHTTPServer'
 alias rmpyc='find ./ -type f -name "*.pyc" -exec rm {} \;'
