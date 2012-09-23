@@ -24,6 +24,7 @@ nmap = za
 nmap - zc
 map ,p <Esc>:set paste<CR>
 map ,[ <Esc>:set nopaste<CR>
+map ,m <Esc>:NERDTreeMirror<CR>
 
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.md set filetype=mkd
@@ -48,6 +49,7 @@ call pathogen#infect()
 autocmd vimenter * NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
 
 " Flake8 settings
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
