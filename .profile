@@ -108,6 +108,9 @@ alias m4aplayer="find . -name '*.m4a' -exec afplay '{}' \;"
 # Pure Awesome. (brew install sox to get the play command)
 alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25  fade h 1 864000 1"
 
+# sigh. put my homebrew ruby bin on the path
+export PATH="$PATH:/usr/local/Cellar/ruby/1.9.3-p0/bin"
+
 # rbenv
 eval "$(rbenv init -)"
 
