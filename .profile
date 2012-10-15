@@ -4,8 +4,11 @@ PS1="../\W $ "
 # Node stuff
 export NODE_PATH="/usr/local/lib/node_modules"
 
+# Prefer /usr/local/bin over /usr/bin
+export PATH="/usr/local/bin:$PATH"
+
 # MySQL Junk
-#PATH=/usr/local/bin:/usr/local/mysql/bin:/usr/local/sbin:$PATH
+#PATH=/usr/local/mysql/bin:/usr/local/sbin:$PATH
 #export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 # Make Haskell's stuff available
@@ -36,12 +39,12 @@ export PIP_RESPECT_VIRTUALENV=true
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
 
 # GeoDjango Libraries
-export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
-export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
-export PATH=/Library/Frameworks/GEOS.framework/Programs:$PATH
-export PATH=/Library/Frameworks/SQLite3.framework/Programs:$PATH
-export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
-export PATH=/usr/local/pgsql/bin:$PATH
+#export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
+#export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
+#export PATH=/Library/Frameworks/GEOS.framework/Programs:$PATH
+#export PATH=/Library/Frameworks/SQLite3.framework/Programs:$PATH
+#export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
+#export PATH=/usr/local/pgsql/bin:$PATH
 
 # pip bash completion start
 _pip_completion()
@@ -115,6 +118,8 @@ export PATH="$PATH:/usr/local/Cellar/ruby/1.9.3-p0/bin"
 eval "$(rbenv init -)"
 
 # Opscode/Chef stuff
-#export OPSCODE_ORGNAME="coroutine"
 export OPSCODE_ORGNAME="workforpie"
 export OPSCODE_USER="workforpie"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
