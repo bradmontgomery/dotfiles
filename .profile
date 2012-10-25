@@ -1,5 +1,6 @@
 #PS1="\H:\w$ "
-PS1="../\W $ "
+PS1='../\W `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`$ '
+
 
 # Node stuff
 export NODE_PATH="/usr/local/lib/node_modules"
@@ -58,11 +59,19 @@ complete -o default -F _pip_completion pip
 
 decrypt() 
 {
-    openssl des3 -d -salt -in $1 -out $2
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "USAGE: decrypt <input> <output>"
+    else
+        openssl des3 -d -salt -in $1 -out $2
+    fi
 }
 encrypt()
 {
-    openssl des3 -salt -in $1 -out $2
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "USAGE: decrypt <input> <output>"
+    else
+        openssl des3 -salt -in $1 -out $2
+    fi
 }
 
 # Git shortcuts
