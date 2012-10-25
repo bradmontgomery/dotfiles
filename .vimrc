@@ -55,6 +55,9 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 let g:flake8_cmd="/Users/brad/.virtualenvs/flake8/bin/flake8"
 
+" Ruby syntax checking
+autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
+
 " Highlight text whose length is over 80 columns
 set colorcolumn=80 "bright vertical red line at col 80
 highlight ColorColumn ctermbg=darkred guibg=#001100 "sets column color
