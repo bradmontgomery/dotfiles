@@ -17,7 +17,8 @@ set nu
 set nospell
 set ruler
 "set guifont=Monaco:h13
-set guifont=Ubuntu\ Mono:h18
+"set guifont=Ubuntu\ Mono:h18
+set guifont=Anonymous\ Pro:h16
 
 nmap \ :noh
 nmap = za
@@ -58,8 +59,11 @@ let g:flake8_cmd="/Users/brad/.virtualenvs/flake8/bin/flake8"
 " Ruby syntax checking
 autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
 
+" Automatically remove trailing whitespace
+autocmd BufWritePre * :%s/\s\+$//e
+
 " Highlight text whose length is over 80 columns
 set colorcolumn=80 "bright vertical red line at col 80
-highlight ColorColumn ctermbg=darkred guibg=#001100 "sets column color
+highlight ColorColumn ctermbg=darkred guibg=#330000 "sets column color
 highlight OverLength ctermbg=17 ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
