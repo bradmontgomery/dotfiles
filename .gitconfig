@@ -5,16 +5,17 @@
     user = bradmontgomery
     token = REALTOKENHERE
 [core]
-    autocrlf = input
+    autocrlf = false
     safecrlf = true
     editor = vim
     excludesfile = /Users/brad/.gitignore_global
 [alias]
     co = checkout
     ci = commit
+    comit = commit
     st = status
     stat = status
-    br = branch 
+    br = branch
     hist = log --pretty=format:\"%Cred%h %Creset%ad | %s%Cgreen%d %Cblue[%an]%Creset\" --graph --date=short
     type = cat-file -t
     dump = cat-file -p
@@ -25,8 +26,8 @@
     diff = true
     status = true
 [color "branch"]
-    current = yellow reverse
-    local = yellow 
+    current = yellow
+    local = white
     remote = green
 [color "diff"]
     meta = yellow bold
@@ -34,6 +35,7 @@
     old = red bold
     new = green bold
 [color "status"]
-    added = yellow
-    changed = green
+    added = green
+    changed = red
     untracked = cyan
+    branch = magenta bold
