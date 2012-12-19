@@ -39,3 +39,5 @@
     changed = red
     untracked = cyan
     branch = magenta bold
+[help]
+	autocorrect = 1
