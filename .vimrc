@@ -35,7 +35,7 @@ au BufNewFile,BufRead *.less set filetype=less
 " Pretty color schemes with iTerm2
 " From: http://kevin.colyar.net/2011/01/pretty-vim-color-schemes-in-iterm2/
 set t_Co=256
-colorscheme desert256 
+colorscheme desert256
 
 " File-specific indentation rules
 " From: http://vim.wikia.com/wiki/Indenting_source_code
@@ -67,3 +67,6 @@ set colorcolumn=80 "bright vertical red line at col 80
 highlight ColorColumn ctermbg=darkred guibg=#330000 "sets column color
 highlight OverLength ctermbg=17 ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
+
+" Highlight search strings
+set :hls
