@@ -57,7 +57,7 @@ _pip_completion()
 complete -o default -F _pip_completion pip
 # pip bash completion end
 
-decrypt() 
+decrypt()
 {
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo "USAGE: decrypt <input> <output>"
@@ -75,7 +75,7 @@ encrypt()
 }
 
 # Git shortcuts
-pull() 
+pull()
 {
     CURRENT=`git branch | grep '\*' | awk '{print $2}'`
     REMOTE=${CURRENT%-dev}
