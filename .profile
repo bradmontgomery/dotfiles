@@ -108,6 +108,7 @@ alias top=htop
 alias get=git
 alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
+alias clera=clear
 
 # Nifty Python Aliases
 alias nosetests="nosetests --with-yanc"
