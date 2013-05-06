@@ -69,4 +69,4 @@ highlight OverLength ctermbg=17 ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
 " Highlight search strings
-set :hls
+"set :hls
