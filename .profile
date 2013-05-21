@@ -104,6 +104,7 @@ push()
 alias ls='ls -G'
 alias ll='ls -lhG'
 alias la='ls -ahG'
+alias hig='history | grep --color'
 alias top=htop
 alias get=git
 alias knive=knife
