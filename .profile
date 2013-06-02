@@ -118,6 +118,7 @@ alias serve='python -m SimpleHTTPServer'
 alias rmpyc='find ./ -type f -name "*.pyc" -exec rm {} \;'
 alias mp3player="find . -name '*.mp3' -exec afplay '{}' \;"
 alias m4aplayer="find . -name '*.m4a' -exec afplay '{}' \;"
+alias ipython_console="ipython qtconsole --pylab=inline"
 
 # Pure Awesome. (brew install sox to get the play command)
 alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25  fade h 1 864000 1"
