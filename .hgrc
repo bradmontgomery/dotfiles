@@ -8,11 +8,12 @@ merge = diffmerge
 git = True
 
 [extensions]
-hgext.graphlog = 
+hgext.graphlog =
 progress =
 color =
 hgext.extdiff =
-hgext.churn=
+hgext.churn =
+hggit =
 
 [progress]
 delay = 1.5
