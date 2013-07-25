@@ -2,6 +2,8 @@
 PS1='../\W `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`$ '
 
 
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+
 # Node stuff
 export NODE_PATH="/usr/local/lib/node_modules"
 
@@ -98,6 +100,16 @@ push()
     echo "git push origin ${REMOTE}"
     echo "git checkout ${CURRENT}"
     echo "-------------------------------"
+}
+
+function pyg()
+{
+    if [ -z "$1" ]; then
+        echo "USAGE: pyg <input>"
+    else
+        echo "Running: pygmentize -f rtf $1 | pbcopy"
+        pygmentize -f rtf $1 | pbcopy
+    fi
 }
 
 # Aliases
