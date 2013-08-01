@@ -1,7 +1,6 @@
 #PS1="\H:\w$ "
 PS1='../\W `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`$ '
 
-
 export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
 
 # Node stuff
@@ -9,10 +8,6 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 # Prefer /usr/local/bin over /usr/bin
 export PATH="/usr/local/bin:$PATH"
-
-# MySQL Junk
-#PATH=/usr/local/mysql/bin:/usr/local/sbin:$PATH
-#export DYLD_LIBRARY_PATH=/usr/local/mysql/lib/
 
 # Make Haskell's stuff available
 export PATH="$HOME/Library/Haskell/bin:$PATH"
@@ -42,6 +37,10 @@ export PIP_RESPECT_VIRTUALENV=true
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
 
 # GeoDjango Libraries
+#GEOS_LIBRARY_PATH='/Library/Frameworks/GEOS.framework/GEOS'
+#GDAL_LIBRARY_PATH='/Library/Frameworks/GDAL.framework/GDAL'
+#GEOIP_LIBRARY_PATH='/usr/local/Cellar/geoip/1.5.1/lib/libGeoIP.dylib'
+
 #export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
 #export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
 #export PATH=/Library/Frameworks/GEOS.framework/Programs:$PATH
