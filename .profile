@@ -9,6 +9,9 @@ export NODE_PATH="/usr/local/lib/node_modules"
 # Prefer /usr/local/bin over /usr/bin
 export PATH="/usr/local/bin:$PATH"
 
+# Prefer Postgres.app over everything else.
+export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+
 # Make Haskell's stuff available
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
@@ -40,7 +43,6 @@ export PIP_RESPECT_VIRTUALENV=true
 #GEOS_LIBRARY_PATH='/Library/Frameworks/GEOS.framework/GEOS'
 #GDAL_LIBRARY_PATH='/Library/Frameworks/GDAL.framework/GDAL'
 #GEOIP_LIBRARY_PATH='/usr/local/Cellar/geoip/1.5.1/lib/libGeoIP.dylib'
-
 #export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
 #export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
 #export PATH=/Library/Frameworks/GEOS.framework/Programs:$PATH
