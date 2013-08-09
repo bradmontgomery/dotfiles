@@ -136,6 +136,15 @@ alias ipython_console="ipython qtconsole --pylab=inline"
 # Pure Awesome. (brew install sox to get the play command)
 alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25  fade h 1 864000 1"
 
+# A little experiment: shortcuts for ssh'ing into various things
+# The .ssh_hosts file will contain aliases that look like:
+#
+#   alias ssh_hostname="ssh user@hostname.example.com"
+#
+if [ -f ~/.ssh_hosts ]; then
+    . ~/.ssh_hosts
+fi
+
 # sigh. put my homebrew ruby bin on the path
 export PATH="$PATH:/usr/local/Cellar/ruby/1.9.3-p0/bin"
 
