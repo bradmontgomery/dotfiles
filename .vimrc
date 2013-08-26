@@ -27,6 +27,7 @@ map ,p <Esc>:set paste<CR>
 map ,[ <Esc>:set nopaste<CR>
 map ,m <Esc>:NERDTreeMirror<CR>
 
+au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.md set filetype=mkd
 au BufRead,BufNewFile *.json set filetype=json
@@ -42,6 +43,8 @@ colorscheme desert256
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
 autocmd FileType cucumber setlocal shiftwidth=2 tabstop=2
 autocmd FileType less setlocal shiftwidth=2 tabstop=2
+autocmd FileType html setlocal shiftwidth=2 tabstop=2
+autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 
 " Pathogen: https://github.com/tpope/vim-pathogen
 call pathogen#infect()
