@@ -60,8 +60,9 @@ autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 let g:flake8_cmd="/Users/brad/.virtualenvs/flake8/bin/flake8"
 " working with legacy python, so ignore:
 " - E111 'indentation is not a multiple of four errors'
+" - E128 'continuation line under-indented for visual indent'
 " - E302 'expected 2 blank lines, found 1'
-let g:flake8_ignore="E111,E302"
+let g:flake8_ignore="E111,E128,E302"
 let g:flake8_max_line_length=150
 
 " Ruby syntax checking
