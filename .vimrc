@@ -45,6 +45,7 @@ autocmd FileType cucumber setlocal shiftwidth=2 tabstop=2
 autocmd FileType less setlocal shiftwidth=2 tabstop=2
 autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
+autocmd FileType sql setlocal shiftwidth=2 tabstop=2
 
 " Pathogen: https://github.com/tpope/vim-pathogen
 call pathogen#infect()
