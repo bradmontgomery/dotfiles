@@ -77,7 +77,9 @@ let g:flake8_cmd="/Users/brad/.virtualenvs/flake8/bin/flake8"
 " - E302 expected 2 blank lines, found 1
 " - E303 too many blank lines
 " - E501 line too long
-let g:flake8_ignore="E111,E121,E123,E127,E128,E201,E202,E203,E221,E225,E231,E251,E302,E303,E501"
+" - E711 comparison to None should be 'if cond is not None:'
+" - E712 comparison to False should be 'if cond is False:' or 'if not cond:'
+let g:flake8_ignore="E111,E121,E123,E127,E128,E201,E202,E203,E221,E225,E231,E251,E302,E303,E501,E711,E712"
 let g:flake8_max_line_length=160
 
 " Ruby syntax checking
@@ -99,10 +101,9 @@ match OverLength /\%81v.\+/
 " Shamelessly stolen from:
 " https://github.com/dpritchett/dotfiles/blob/master/.gvimrc
 " ----------------------------------------------------------
-
 " Don't intercept Cmd-P or Cmd-W
-macmenu File.Print  key=<nop>
-macmenu File.Close  key=<nop>
+"macmenu File.Print  key=<nop>
+"macmenu File.Close  key=<nop>
 " Stop hitting cmd-w
 nnoremap <D-w> <Nop>
 inoremap <D-w> <Nop>
