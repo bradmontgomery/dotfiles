@@ -138,6 +138,19 @@ alias 936='python -m ninethreesix.password'
 # Pure Awesome. (brew install sox to get the play command)
 alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25  fade h 1 864000 1"
 
+# Alias for Love2d
+alias love="/Applications/love.app/Contents/MacOS/love"
+
+# A little function to zip up the current directory contents into a .love file.
+function loveit()
+{
+    if [ -z "$1" ]; then
+        echo "USAGE: loveit <name>"
+    else
+        zip -9 -q -r $1.love .
+    fi
+}
+
 # A little experiment: shortcuts for ssh'ing into various things
 # The .ssh_hosts file will contain aliases that look like:
 #
