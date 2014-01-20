@@ -88,6 +88,9 @@ autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
 " Automatically remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Syntastic. https://github.com/scrooloose/syntastic
+let g:syntastic_lua_checkers=['luac']
+
 " Highlight text whose length is over 80 columns
 set colorcolumn=80 "bright vertical red line at col 80
 highlight ColorColumn ctermbg=darkred guibg=#330000 "sets column color
