@@ -3,6 +3,7 @@ username = Brad Montgomery <brad@bradmontgomery.net>
 editor = vim
 verbose = True
 merge = diffmerge
+ssh = ssh -C
 
 [diff]
 git = True
