@@ -77,6 +77,15 @@ encrypt()
     fi
 }
 
+function convert_to_mp3
+{
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "USAGE: convert_to_mp3 <input_file> <output_file.mp3>"
+    else
+        ffmpeg -i $1 -acodec mp3 $2
+    fi
+}
+
 # Git shortcuts
 pull()
 {
