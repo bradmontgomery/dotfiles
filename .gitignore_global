@@ -2,5 +2,6 @@
 *.swp
 *.pyc
 *.db
+.vagrant/
 manage.sh
 test.sh
