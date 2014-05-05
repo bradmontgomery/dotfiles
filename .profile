@@ -1,7 +1,9 @@
 #PS1="\H:\w$ "
 PS1='../\W `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`$ '
 
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+# NOT SURE WHY THIS BREAKS SHIT
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages
 
 # Node stuff
 export NODE_PATH="/usr/local/lib/node_modules"
@@ -10,7 +12,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 export PATH="/usr/local/bin:$PATH"
 
 # Prefer Postgres.app over everything else.
-export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+#export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
 
 # Make Haskell's stuff available
 export PATH="$HOME/Library/Haskell/bin:$PATH"
@@ -143,7 +145,18 @@ alias m4aplayer="find . -name '*.m4a' -exec afplay '{}' \;"
 alias ipython_console="ipython qtconsole --pylab=inline"
 alias lolutc='python -c "for h in range(0,24): print \"{0} utc --- {1} cst --- {2} pst\".format(h, (h+6)%24, (h+8)%24)"'
 alias 936='python -m ninethreesix.password'
-alias listmodels='cat models.py | grep "^class " | sed "s/class //" | sed "s/(.*$//" | sort | grep -v Manager'
+
+# A Function to list all the python classes in a file
+function listclasses()
+{
+    if [ -z "$1" ]; then
+        F="models.py"
+    else
+        F="$1"
+    fi
+    cat $F | grep "^class " | sed "s/class //" | sed "s/(.*$//" | sort
+}
+alias listmodels=listclasses | grep -v Manager
 
 # Pure Awesome. (brew install sox to get the play command)
 alias impulsepower="play -n -c1 synth whitenoise band -n 100 20 band -n 50 20 gain +25  fade h 1 864000 1"
@@ -171,10 +184,10 @@ if [ -f ~/.ssh_hosts ]; then
 fi
 
 # sigh. put my homebrew ruby bin on the path
-export PATH="$PATH:/usr/local/Cellar/ruby/1.9.3-p0/bin"
+#export PATH="$PATH:/usr/local/Cellar/ruby/1.9.3-p0/bin"
 
 # rbenv
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # Opscode/Chef stuff
 export OPSCODE_ORGNAME="workforpie"
@@ -182,3 +195,4 @@ export OPSCODE_USER="workforpie"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+python -c "import this" | cowsay
