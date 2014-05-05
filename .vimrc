@@ -65,6 +65,7 @@ let g:flake8_cmd="/Users/brad/.virtualenvs/flake8/bin/flake8"
 " - E111 indentation is not a multiple of four errors
 " - E121 continuation line indentation is not a multiple of four
 " - E123 closing bracket does not match indentation of opening bracket's line
+" - E124 closing bracket does not match visual indentation
 " - E127 continuation line over-indented for visual indent
 " - E128 continuation line under-indented for visual indent
 " - E201 whitespace after '('
@@ -72,14 +73,16 @@ let g:flake8_cmd="/Users/brad/.virtualenvs/flake8/bin/flake8"
 " - E203 whitespace before ':'
 " - E221 multiple spaces before operator
 " - E225 missing whitespace around operator
+" - E226 missing whitespace around arithmetic operator
 " - E231 missing whitespace after ','
 " - E251 no spaces around keyword / parameter equals
+" - E265 block comment should start with '# '"
 " - E302 expected 2 blank lines, found 1
 " - E303 too many blank lines
 " - E501 line too long
 " - E711 comparison to None should be 'if cond is not None:'
 " - E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-let g:flake8_ignore="E111,E121,E123,E127,E128,E201,E202,E203,E221,E225,E231,E251,E302,E303,E501,E711,E712"
+let g:flake8_ignore="E111,E121,E123,E124,E127,E128,E201,E202,E203,E221,E225,E226,E231,E251,E265,E302,E303,E501,E711,E712"
 let g:flake8_max_line_length=160
 
 " Ruby syntax checking
@@ -90,6 +93,8 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Syntastic. https://github.com/scrooloose/syntastic
 let g:syntastic_lua_checkers=['luac']
+let g:syntastic_javascript_checkers=['jshint']
+
 
 " Highlight text whose length is over 80 columns
 set colorcolumn=80 "bright vertical red line at col 80
