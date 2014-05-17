@@ -195,4 +195,3 @@ export OPSCODE_USER="workforpie"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-python -c "import this" | cowsay
