@@ -143,7 +143,8 @@ alias rmpyc='find ./ -type f -name "*.pyc" -exec rm {} \;'
 alias mp3player="find . -name '*.mp3' -exec afplay '{}' \;"
 alias m4aplayer="find . -name '*.m4a' -exec afplay '{}' \;"
 alias ipython_console="ipython qtconsole --pylab=inline"
-alias lolutc='python -c "for h in range(0,24): print \"{0} utc --- {1} cst --- {2} pst\".format(h, (h+6)%24, (h+8)%24)"'
+alias lolutc='python -c "for h in range(0,24): print \"{0} utc --- {1} cdt --- {2} pdt\".format(h, (h-5)%24, (h-8)%24)"'
+#alias lolutc='python -c "for h in range(0,24): print \"{0} utc --- {1} cst --- {2} pst\".format(h, (h-6)%24, (h-8)%24)"'
 alias 936='python -m ninethreesix.password'
 
 # A Function to list all the python classes in a file
