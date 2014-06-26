@@ -52,10 +52,10 @@ autocmd FileType sql setlocal shiftwidth=2 tabstop=2
 " Pathogen: https://github.com/tpope/vim-pathogen
 call pathogen#infect()
 
-" NERDtree tweeks
-autocmd vimenter * NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" NERDtree tweeks (The first 3 lines will auto-start NERDTree)
+"autocmd vimenter * NERDTree
+"autocmd vimenter * if !argc() | NERDTree | endif
+"autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
 
 " Flake8 settings
