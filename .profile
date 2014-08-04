@@ -200,3 +200,6 @@ export OPSCODE_USER="workforpie"
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# Load the secret env vars.
+source .secrets.sh
