@@ -27,11 +27,12 @@ map ,p <Esc>:set paste<CR>
 map ,[ <Esc>:set nopaste<CR>
 map ,m <Esc>:NERDTreeMirror<CR>
 
+au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile *.ejs set filetype=html
 au BufRead,BufNewFile *.md set filetype=mkd
 au BufRead,BufNewFile *.json set filetype=json
-au BufNewFile,BufRead *.less set filetype=less
+au BufRead,BufNewFile *.less set filetype=less
 
 " Pretty color schemes with iTerm2
 " From: http://kevin.colyar.net/2011/01/pretty-vim-color-schemes-in-iterm2/
@@ -57,6 +58,11 @@ call pathogen#infect()
 "autocmd vimenter * if !argc() | NERDTree | endif
 "autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
+
+" Use current directory as the CtrlP working directory
+let g:ctrlp_working_path_mode = 'ra'
+" Ingore things we dont' want to open in vim.
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
 
 " Flake8 settings
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
