@@ -2,8 +2,8 @@
 PS1='../\W `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`$ '
 
 # NOT SURE WHY THIS BREAKS SHIT
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:$PYTHONPATH
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python:$PYTHONPATH
+export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python
 
 # Node stuff
 export NODE_PATH="/usr/local/lib/node_modules"
@@ -16,6 +16,10 @@ export PATH="/usr/local/bin:$PATH"
 
 # Make Haskell's stuff available
 export PATH="$HOME/Library/Haskell/bin:$PATH"
+
+# Go
+export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+#export GOROOT="/usr/local/opt/go/libexec/bin"
 
 # OpenCV libraries
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/sw/lib
@@ -31,9 +35,9 @@ export EDITOR=/usr/bin/vi
 
 # Virtualenvwrapper
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
+source /usr/local/bin/virtualenvwrapper.sh
 
 # For cx-Oracle
 #export ORACLE_HOME=$HOME/Oracle10g_MacOSX/instantclient/instantclient_10_2
