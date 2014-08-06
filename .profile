@@ -202,4 +202,4 @@ export OPSCODE_USER="workforpie"
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # Load the secret env vars.
-source .secrets.sh
+source $HOME/Dropbox/dotfiles/secrets.sh
