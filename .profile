@@ -9,7 +9,7 @@ export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python
 export NODE_PATH="/usr/local/lib/node_modules"
 
 # Prefer /usr/local/bin over /usr/bin
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:$PATH:$HOME/bin"
 
 # Prefer Postgres.app over everything else.
 #export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
