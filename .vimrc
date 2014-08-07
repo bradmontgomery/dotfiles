@@ -27,6 +27,7 @@ map ,p <Esc>:set paste<CR>
 map ,[ <Esc>:set nopaste<CR>
 map ,m <Esc>:NERDTreeMirror<CR>
 
+au BufRead,BufNewFile *.py let python_highlight_all=1
 au BufRead,BufNewFile *.go set filetype=go
 au BufRead,BufNewFile *.html set filetype=htmldjango
 au BufRead,BufNewFile *.ejs set filetype=html
