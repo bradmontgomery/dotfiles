@@ -12,7 +12,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 export PATH="/usr/local/bin:$PATH:$HOME/bin"
 
 # Prefer Postgres.app over everything else.
-#export PATH="/Applications/Postgres.app/Contents/MacOS/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
 
 # Make Haskell's stuff available
 export PATH="$HOME/Library/Haskell/bin:$PATH"
@@ -20,6 +20,13 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 # Go
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #export GOROOT="/usr/local/opt/go/libexec/bin"
+
+# Load cordova stuff for android (TODO: do something more intelligent with this)
+if [ -e ~/mobile_development/adt-bundle ]; then
+    export ANDROID_HOME=~/mobile_development/adt-bundle/sdk
+    export PATH=${PATH}:~/mobile_development/adt-bundle/sdk/tools
+    export PATH=${PATH}:~/mobile_development/adt-bundle/sdk/platform-tools
+fi
 
 # OpenCV libraries
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/sw/lib
