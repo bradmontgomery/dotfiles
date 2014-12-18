@@ -58,7 +58,7 @@ call pathogen#infect()
 "autocmd vimenter * NERDTree
 "autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$']
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
 
 " Use current directory as the CtrlP working directory
 let g:ctrlp_working_path_mode = 'ra'
