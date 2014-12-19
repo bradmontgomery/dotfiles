@@ -100,7 +100,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 
 " Syntastic. https://github.com/scrooloose/syntastic
 let g:syntastic_lua_checkers=['luac']
-let g:syntastic_javascript_checkers=['jshint']
+let g:syntastic_javascript_checkers=['jsxhint']
 
 
 " Highlight text whose length is over 80 columns
