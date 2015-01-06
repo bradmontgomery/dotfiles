@@ -90,7 +90,6 @@ let g:flake8_cmd=$HOME."/.virtualenvs/flake8/bin/flake8"
 " - E711 comparison to None should be 'if cond is not None:'
 " - E712 comparison to False should be 'if cond is False:' or 'if not cond:'
 "let g:flake8_ignore="E111,E121,E123,E124,E127,E128,E201,E202,E203,E221,E225,E226,E231,E251,E265,E302,E303,E501,E711,E712"
-let g:flake8_max_line_length=160
 
 " Ruby syntax checking
 autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
