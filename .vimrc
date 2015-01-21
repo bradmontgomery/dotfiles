@@ -20,6 +20,7 @@ set ruler
 "set guifont=Ubuntu\ Mono:h18
 set guifont=Anonymous\ Pro:h16
 
+imap jk <Esc>
 nmap \ :noh
 nmap = za
 nmap - zc
