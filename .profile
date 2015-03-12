@@ -1,5 +1,5 @@
-#PS1="\H:\w$ "
-PS1='../\W `git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`$ '
+# See this epic color codes guide: http://unix.stackexchange.com/a/124409/87343
+PS1='\[\033[48;5;233;38;5;87m\]../\W\[\033[0m\] \[\033[33m\]`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`\[\033[01;32m\]$\[\033[0m\] '
 
 # NOT SURE WHY THIS BREAKS SHIT
 #export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python:$PYTHONPATH
