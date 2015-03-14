@@ -20,6 +20,7 @@
     type = cat-file -t
     dump = cat-file -p
     dif = diff --color
+    df = diff --color
 [color]
     ui = true
     branch = true
