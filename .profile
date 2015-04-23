@@ -21,11 +21,10 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #export GOROOT="/usr/local/opt/go/libexec/bin"
 
-# Load cordova stuff for android (TODO: do something more intelligent with this)
-if [ -e ~/mobile_development/adt-bundle ]; then
-    export ANDROID_HOME=~/mobile_development/adt-bundle/sdk
-    export PATH=${PATH}:~/mobile_development/adt-bundle/sdk/tools
-    export PATH=${PATH}:~/mobile_development/adt-bundle/sdk/platform-tools
+# Load stuff for android
+if [ -e ~/Library/Android/sdk/platform-tools ]; then
+    export PATH=${PATH}:~/Library/Android/sdk/tools
+    export PATH=${PATH}:~/Library/Android/sdk/platform-tools
 fi
 
 # OpenCV libraries
@@ -145,6 +144,7 @@ alias get=git
 alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 alias clera=clear
+alias tail='less +F'
 
 # Nifty Python Aliases
 alias nosetests="nosetests --with-yanc"
