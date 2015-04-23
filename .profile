@@ -98,32 +98,6 @@ function convert_to_mp3
     fi
 }
 
-# Git shortcuts
-pull()
-{
-    CURRENT=`git branch | grep '\*' | awk '{print $2}'`
-    REMOTE=${CURRENT%-dev}
-
-    echo "--- do you want to do this? ---"
-    echo "git checkout ${REMOTE}"
-    echo "git pull origin ${REMOTE}"
-    echo "git checkout ${CURRENT}"
-    echo "git rebase ${REMOTE}"
-    echo "-------------------------------"
-}
-push()
-{
-    CURRENT=`git branch | grep '\*' | awk '{print $2}'`
-    REMOTE=${CURRENT%-dev}
-
-    echo "--- do you want to do this? ---"
-    echo "git checkout ${REMOTE}"
-    echo "git merge ${CURRENT}"
-    echo "git push origin ${REMOTE}"
-    echo "git checkout ${CURRENT}"
-    echo "-------------------------------"
-}
-
 function pyg()
 {
     if [ -z "$1" ]; then
@@ -141,6 +115,7 @@ alias la='ls -ahG'
 alias hig='history | grep --color'
 alias top=htop
 alias get=git
+alias br='git branch'
 alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 alias clera=clear
