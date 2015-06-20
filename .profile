@@ -111,11 +111,13 @@ function pyg()
 # Aliases
 alias ls='ls -G'
 alias ll='ls -lhG'
+alias l='ls -lhG'
 alias la='ls -ahG'
 alias hig='history | grep --color'
 alias top=htop
 alias get=git
 alias br='git branch'
+alias st='git status'
 alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 alias clera=clear
