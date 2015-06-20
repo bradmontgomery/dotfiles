@@ -10,6 +10,7 @@ export NODE_PATH="/usr/local/lib/node_modules"
 
 # Prefer /usr/local/bin over /usr/bin
 export PATH="/usr/local/bin:$PATH:$HOME/bin"
+export PATH="/usr/local/sbin:$PATH"
 
 # Prefer Postgres.app over everything else.
 export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
