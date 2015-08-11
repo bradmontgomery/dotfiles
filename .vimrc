@@ -41,6 +41,9 @@ au BufRead,BufNewFile *.less set filetype=less
 set t_Co=256
 colorscheme desert256
 
+" Custom color for a popup menu
+highlight Pmenu ctermfg=2 ctermbg=3 guifg=#ffffff guibg=#888888
+
 " File-specific indentation rules
 " From: http://vim.wikia.com/wiki/Indenting_source_code
 autocmd FileType ruby setlocal shiftwidth=2 tabstop=2
