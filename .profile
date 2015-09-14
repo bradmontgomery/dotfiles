@@ -28,6 +28,9 @@ if [ -e ~/Library/Android/sdk/platform-tools ]; then
     export PATH=${PATH}:~/Library/Android/sdk/platform-tools
 fi
 
+# Packer
+export PATH="/usr/local/packer:$PATH"
+
 # OpenCV libraries
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/sw/lib
 #export PKG_CONFIG_PATH=$PKG_CONFIG_PAGH:/usr/local/lib/pkgconfig
