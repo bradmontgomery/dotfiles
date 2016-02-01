@@ -7,7 +7,8 @@ let loaded_matchparen=1
 let mapleader=","
 set autoindent
 set expandtab
-"set foldmethod=marker
+set foldmethod=indent
+set foldlevel=99
 set nocompatible
 set report=0
 set shiftwidth=4
@@ -16,6 +17,8 @@ set tabstop=4
 set nu
 set nospell
 set ruler
+set encoding=utf-8
+
 "set guifont=Monaco:h13
 "set guifont=Ubuntu\ Mono:h18
 set guifont=Anonymous\ Pro:h16
@@ -27,6 +30,13 @@ nmap - zc
 map ,p <Esc>:set paste<CR>
 map ,[ <Esc>:set nopaste<CR>
 map ,m <Esc>:NERDTreeMirror<CR>
+nnoremap <space> za
+
+" easier split navigation
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
 
 au BufRead,BufNewFile *.py let python_highlight_all=1
 au BufRead,BufNewFile *.go set filetype=go
