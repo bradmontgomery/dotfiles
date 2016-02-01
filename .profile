@@ -112,6 +112,21 @@ function pyg()
     fi
 }
 
+function png2gif
+{
+
+    if [ -z "$1" ]; then
+        echo "USAGE: png2gif <Filename> -- provide filename without -x.png, "
+        echo "     e.g. ToastFox-1.png, ToastFox-2.png --> png2gif ToastFox "
+    else
+        FILE_PATTERN="$1-%d.png";
+        OUTPUT="$1.gif";
+        ffmpeg -f image2 -i $FILE_PATTERN -vcodec copy tmp-video.mkv && \
+        ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 5 $OUTPUT;
+        rm tmp-video.mkv
+    fi
+}
+
 # Aliases
 alias ls='ls -G'
 alias ll='ls -lhG'
