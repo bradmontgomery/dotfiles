@@ -135,6 +135,7 @@ alias la='ls -ahG'
 alias hig='history | grep --color'
 alias top=htop
 alias get=git
+alias gti=git
 alias br='git branch'
 alias st='git status'
 alias knive=knife
