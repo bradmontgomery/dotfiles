@@ -71,7 +71,9 @@ call pathogen#infect()
 " NERDtree tweeks (The first 3 lines will auto-start NERDTree)
 "autocmd vimenter * NERDTree
 "autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" Quit if NERDTree is the only buffer open, see: https://github.com/scrooloose/nerdtree/issues/21
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
 
 " Use current directory as the CtrlP working directory
