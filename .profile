@@ -145,6 +145,29 @@ function jpg2gif
     fi
 }
 
+
+function timerequest
+{
+    # Use curl to TIME http requests.
+    # Inspired by this: http://stackoverflow.com/a/22625150/182778
+
+   FMT="
+         http_code:  %{http_code}
+     size_download:  %{size_download}
+       size_header:  %{size_header}
+    speed_download:  %{speed_download}\n
+   time_namelookup:  %{time_namelookup}
+      time_connect:  %{time_connect}
+   time_appconnect:  %{time_appconnect}
+  time_pretransfer:  %{time_pretransfer}
+     time_redirect:  %{time_redirect}
+time_starttransfer:  %{time_starttransfer}
+                   ----------
+        time_total:  %{time_total}
+    "
+    curl -w "$FMT" -o /dev/null -s $1
+}
+
 # Aliases
 alias ls='ls -G'
 alias ll='ls -lhG'
