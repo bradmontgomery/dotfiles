@@ -115,6 +115,8 @@ function pyg()
 function png2gif
 {
 
+    ## TODO: Make -r <rate> an input value.
+
     if [ -z "$1" ]; then
         echo "USAGE: png2gif <Filename> -- provide filename without -x.png, "
         echo "     e.g. ToastFox-1.png, ToastFox-2.png --> png2gif ToastFox "
@@ -123,6 +125,22 @@ function png2gif
         OUTPUT="$1.gif";
         ffmpeg -f image2 -i $FILE_PATTERN -vcodec copy tmp-video.mkv && \
         ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 5 $OUTPUT;
+        rm tmp-video.mkv
+    fi
+}
+function jpg2gif
+{
+    ## TODO: Make -r <rate> an input value.
+    # TODO: figure out how to control speed :-/
+
+    if [ -z "$1" ]; then
+        echo "USAGE: jpg2gif <Filename> -- provide filename without -x.jpg, "
+        echo "     e.g. ToastFox-1.jpg, ToastFox-2.jpg --> jpg2gif ToastFox "
+    else
+        FILE_PATTERN="$1-%d.jpg";
+        OUTPUT="$1.gif";
+        ffmpeg -f image2 -i $FILE_PATTERN -vcodec copy tmp-video.mkv && \
+        ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 20 -frames 6 -vframes 6 $OUTPUT;
         rm tmp-video.mkv
     fi
 }
