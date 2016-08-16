@@ -125,6 +125,9 @@ highlight ColorColumn ctermbg=darkred guibg=#330000 "sets column color
 highlight OverLength ctermbg=17 ctermfg=white guibg=#592929
 match OverLength /\%81v.\+/
 
+" Enable neocomplete
+let g:neocomplete#enable_at_startup = 1
+
 " Highlight search strings
 "set :hls
 
