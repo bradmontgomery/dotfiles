@@ -3,7 +3,7 @@ PS1='\[\033[48;5;233;38;5;87m\]../\W\[\033[0m\] \[\033[33m\]`git branch 2> /dev/
 
 # NOT SURE WHY THIS BREAKS SHIT
 #export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python:$PYTHONPATH
-export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python
+#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python
 
 # Node stuff
 export NODE_PATH="/usr/local/lib/node_modules"
