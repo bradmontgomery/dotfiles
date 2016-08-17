@@ -44,10 +44,12 @@ export VISUAL=/usr/bin/vi
 export EDITOR=/usr/bin/vi
 
 # Virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
 export PIP_REQUIRE_VIRTUALENV=true
 export PIP_RESPECT_VIRTUALENV=true
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # For cx-Oracle
 #export ORACLE_HOME=$HOME/Oracle10g_MacOSX/instantclient/instantclient_10_2
