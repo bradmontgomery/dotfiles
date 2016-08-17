@@ -115,6 +115,8 @@ function pyg()
 function png2gif
 {
 
+    ## TODO: Make -r <rate> an input value.
+
     if [ -z "$1" ]; then
         echo "USAGE: png2gif <Filename> -- provide filename without -x.png, "
         echo "     e.g. ToastFox-1.png, ToastFox-2.png --> png2gif ToastFox "
@@ -125,6 +127,45 @@ function png2gif
         ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 5 $OUTPUT;
         rm tmp-video.mkv
     fi
+}
+function jpg2gif
+{
+    ## TODO: Make -r <rate> an input value.
+    # TODO: figure out how to control speed :-/
+
+    if [ -z "$1" ]; then
+        echo "USAGE: jpg2gif <Filename> -- provide filename without -x.jpg, "
+        echo "     e.g. ToastFox-1.jpg, ToastFox-2.jpg --> jpg2gif ToastFox "
+    else
+        FILE_PATTERN="$1-%d.jpg";
+        OUTPUT="$1.gif";
+        ffmpeg -f image2 -i $FILE_PATTERN -vcodec copy tmp-video.mkv && \
+        ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 20 -frames 6 -vframes 6 $OUTPUT;
+        rm tmp-video.mkv
+    fi
+}
+
+
+function timerequest
+{
+    # Use curl to TIME http requests.
+    # Inspired by this: http://stackoverflow.com/a/22625150/182778
+
+   FMT="
+         http_code:  %{http_code}
+     size_download:  %{size_download}
+       size_header:  %{size_header}
+    speed_download:  %{speed_download}\n
+   time_namelookup:  %{time_namelookup}
+      time_connect:  %{time_connect}
+   time_appconnect:  %{time_appconnect}
+  time_pretransfer:  %{time_pretransfer}
+     time_redirect:  %{time_redirect}
+time_starttransfer:  %{time_starttransfer}
+                   ----------
+        time_total:  %{time_total}
+    "
+    curl -w "$FMT" -o /dev/null -s $1
 }
 
 # Aliases
