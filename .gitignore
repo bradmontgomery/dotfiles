@@ -6,4 +6,5 @@ __pycache__
 .vim/bundle
 .vagrant
 .swp
+*.swp
 /node_modules
