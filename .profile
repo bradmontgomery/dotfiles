@@ -248,3 +248,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Load the secret env vars.
 source $HOME/Dropbox/dotfiles/secrets.sh
+
+eval "$(thefuck --alias)"
+
+# Make sure our ssh keys actually work like they're supposed to :-/
+# http://apple.stackexchange.com/a/254714/58762
+ssh-add -A 2>/dev/null;
