@@ -3,5 +3,6 @@
 *.pyc
 *.db
 .vagrant/
+env/
 manage.sh
 test.sh
