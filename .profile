@@ -22,6 +22,9 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 #export GOROOT="/usr/local/opt/go/libexec/bin"
 
+# Yarn
+export PATH="$PATH:`yarn global bin`"
+
 # Load stuff for android
 if [ -e ~/Library/Android/sdk/platform-tools ]; then
     export PATH=${PATH}:~/Library/Android/sdk/tools
@@ -256,3 +259,8 @@ eval "$(thefuck --alias)"
 # Make sure our ssh keys actually work like they're supposed to :-/
 # http://apple.stackexchange.com/a/254714/58762
 ssh-add -A 2>/dev/null;
+
+# Setting PATH for Python 3.6
+# The original version is saved in .profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
