@@ -145,3 +145,8 @@ inoremap <D-w> <Nop>
 
 " Hide toolbar
 set guioptions-=T
+" Turn off bells
+set noerrorbells
+set novisualbell
+set t_vb=
+autocmd! GUIEnter * set vb t_vb=
