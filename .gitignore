@@ -1,4 +1,6 @@
+.env
 env/
+env27/
 __pycache__
 .secrets.sh
 .ssh_hosts
