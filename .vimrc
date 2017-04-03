@@ -18,6 +18,8 @@ set nu
 set nospell
 set ruler
 set encoding=utf-8
+set list
+set listchars=tab:>-
 
 "set guifont=Monaco:h13
 "set guifont=Ubuntu\ Mono:h18
