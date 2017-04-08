@@ -120,6 +120,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 let g:syntastic_lua_checkers=['luac']
 "let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_javascript_checkers=['eslint']
+let coffee_linter = '/usr/local/bin/coffeelint'
 
 
 " Highlight text whose length is over 80 columns
