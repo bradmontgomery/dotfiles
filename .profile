@@ -13,7 +13,7 @@ export PATH="/usr/local/bin:$PATH:$HOME/bin"
 export PATH="/usr/local/sbin:$PATH"
 
 # Prefer Postgres.app over everything else.
-export PATH="/Applications/Postgres.app/Contents/Versions/9.4/bin:$PATH"
+export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # Make Haskell's stuff available
 export PATH="$HOME/Library/Haskell/bin:$PATH"
@@ -172,6 +172,18 @@ time_starttransfer:  %{time_starttransfer}
     "
     curl -w "$FMT" -o /dev/null -s $1
 }
+
+
+function fnd
+{
+    # find but with a syntax I can remember.
+    if [ -z "$1" ]; then
+        echo "USAGE: fnd <pattern>"
+    else
+        find . -name "$1" -print
+    fi
+}
+
 
 # Aliases
 alias ls='ls -G'
