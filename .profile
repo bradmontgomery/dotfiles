@@ -184,6 +184,11 @@ function fnd
     fi
 }
 
+# http://osxdaily.com/2013/12/27/fix-there-is-no-connected-camera-error-mac/
+function fixCamera {
+    sudo killall AppleCameraAssistant;
+    sudo killall VDCAssistant;
+}
 
 # Aliases
 alias ls='ls -G'
@@ -199,6 +204,7 @@ alias st='git status'
 alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 alias clera=clear
+alias claer=clear
 alias tail='less +F'
 
 # Nifty Python Aliases
