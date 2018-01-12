@@ -12,7 +12,10 @@ export NODE_PATH="/usr/local/lib/node_modules"
 export PATH="/usr/local/bin:$PATH:$HOME/bin"
 export PATH="/usr/local/sbin:$PATH"
 
-# Prefer Postgres.app over everything else.
+# HDF5 utils.
+export PATH="/usr/local/opt/hdf5\@1.8/bin/:$PATH"
+
+# Prefer Postgres.app's binaries.
 export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 
 # Make Haskell's stuff available
