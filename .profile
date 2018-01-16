@@ -242,3 +242,6 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # The original version is saved in .profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
+
+# direnv
+eval "$(direnv hook bash)"
