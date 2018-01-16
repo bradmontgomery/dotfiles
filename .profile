@@ -1,10 +1,6 @@
 # See this epic color codes guide: http://unix.stackexchange.com/a/124409/87343
 PS1='\[\033[48;5;233;38;5;87m\]../\W\[\033[0m\] \[\033[33m\]`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`\[\033[01;32m\]$\[\033[0m\] '
 
-# NOT SURE WHY THIS BREAKS SHIT
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python:$PYTHONPATH
-#export PYTHONPATH=/usr/local/lib/python2.7/site-packages:/usr/local/share/python
-
 # Node stuff
 export NODE_PATH="/usr/local/lib/node_modules"
 
@@ -37,42 +33,10 @@ fi
 # Packer
 export PATH="/usr/local/packer:$PATH"
 
-# OpenCV libraries
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib:/sw/lib
-#export PKG_CONFIG_PATH=$PKG_CONFIG_PAGH:/usr/local/lib/pkgconfig
-#DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:/usr/local/lib:/sw/lib:/usr/lib
-#export DYLD_LIBRARY_PATH
-#export DYLD_FALLBACK_LIBRARY_PATH=/sw/lib:$DYLD_FALLBACK_LIBRARY_PATH
-
 # create some environment variables for svn
 export SVN_EDITOR=/usr/bin/vi
 export VISUAL=/usr/bin/vi
 export EDITOR=/usr/bin/vi
-
-# Virtualenvwrapper
-export PIP_REQUIRE_VIRTUALENV=true
-export PIP_RESPECT_VIRTUALENV=true
-if [ -e /usr/local/bin/virtualenvwrapper.sh ]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
-# For cx-Oracle
-#export ORACLE_HOME=$HOME/Oracle10g_MacOSX/instantclient/instantclient_10_2
-#export ORACLE_SID=ODSP
-#export DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$ORACLE_HOME
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
-
-# GeoDjango Libraries
-#GEOS_LIBRARY_PATH='/Library/Frameworks/GEOS.framework/GEOS'
-#GDAL_LIBRARY_PATH='/Library/Frameworks/GDAL.framework/GDAL'
-#GEOIP_LIBRARY_PATH='/usr/local/Cellar/geoip/1.5.1/lib/libGeoIP.dylib'
-#export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
-#export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
-#export PATH=/Library/Frameworks/GEOS.framework/Programs:$PATH
-#export PATH=/Library/Frameworks/SQLite3.framework/Programs:$PATH
-#export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
-#export PATH=/usr/local/pgsql/bin:$PATH
 
 # pip bash completion start
 _pip_completion()
@@ -122,9 +86,7 @@ function pyg()
 
 function png2gif
 {
-
     ## TODO: Make -r <rate> an input value.
-
     if [ -z "$1" ]; then
         echo "USAGE: png2gif <Filename> -- provide filename without -x.png, "
         echo "     e.g. ToastFox-1.png, ToastFox-2.png --> png2gif ToastFox "
@@ -136,11 +98,11 @@ function png2gif
         rm tmp-video.mkv
     fi
 }
+
 function jpg2gif
 {
-    ## TODO: Make -r <rate> an input value.
+    # TODO: Make -r <rate> an input value.
     # TODO: figure out how to control speed :-/
-
     if [ -z "$1" ]; then
         echo "USAGE: jpg2gif <Filename> -- provide filename without -x.jpg, "
         echo "     e.g. ToastFox-1.jpg, ToastFox-2.jpg --> jpg2gif ToastFox "
@@ -218,8 +180,6 @@ alias rmpyc='find ./ -type f -name "*.pyc" -exec rm {} \;'
 alias mp3player="find . -name '*.mp3' -exec afplay '{}' \;"
 alias m4aplayer="find . -name '*.m4a' -exec afplay '{}' \;"
 alias ipython_console="ipython qtconsole --pylab=inline"
-alias lolutc='python -c "for h in range(0,24): print \"{0} utc --- {1} cdt --- {2} pdt\".format(h, (h-5)%24, (h-8)%24)"'
-#alias lolutc='python -c "for h in range(0,24): print \"{0} utc --- {1} cst --- {2} pst\".format(h, (h-6)%24, (h-8)%24)"'
 alias 936='python -m ninethreesix.password'
 
 # A Function to list all the python classes in a file
@@ -259,12 +219,6 @@ if [ -f ~/.ssh_hosts ]; then
     . ~/.ssh_hosts
 fi
 
-# sigh. put my homebrew ruby bin on the path
-#export PATH="$PATH:/usr/local/Cellar/ruby/1.9.3-p0/bin"
-
-# rbenv
-#eval "$(rbenv init -)"
-
 # Opscode/Chef stuff
 export OPSCODE_ORGNAME="workforpie"
 export OPSCODE_USER="workforpie"
@@ -280,17 +234,6 @@ eval "$(thefuck --alias)"
 # Make sure our ssh keys actually work like they're supposed to :-/
 # http://apple.stackexchange.com/a/254714/58762
 ssh-add -A 2>/dev/null;
-
-# Setting PATH for Python 3.6
-# The original version is saved in .profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
-source /usr/local/opt/autoenv/activate.sh
-
-# Setting PATH for Python 3.6
-# The original version is saved in .profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
 
 # Rust!
 export PATH="$HOME/.cargo/bin:$PATH"

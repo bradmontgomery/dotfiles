@@ -75,18 +75,19 @@ call pathogen#infect()
 "autocmd vimenter * if !argc() | NERDTree | endif
 " Quit if NERDTree is the only buffer open, see: https://github.com/scrooloose/nerdtree/issues/21
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
 
 " Use current directory as the CtrlP working directory
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
+
 " Ingore things we dont' want to open in vim.
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
 
 " Flake8 settings
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 let g:flake8_cmd="flake8"
+
 " working with legacy python, so ignore:
 " - E111 indentation is not a multiple of four errors
 " - E121 continuation line indentation is not a multiple of four
