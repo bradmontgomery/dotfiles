@@ -166,6 +166,7 @@ alias get=git
 alias gti=git
 alias br='git branch'
 alias st='git status'
+alias prune='git remote prune origin'
 alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 alias clera=clear
@@ -229,7 +230,9 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Load the secret env vars.
 source $HOME/Dropbox/dotfiles/secrets.sh
 
-eval "$(thefuck --alias)"
+if hash thefuck 2>/dev/null; then
+    eval "$(thefuck --alias)"
+fi
 
 # Make sure our ssh keys actually work like they're supposed to :-/
 # http://apple.stackexchange.com/a/254714/58762
@@ -244,4 +247,6 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
 
 # direnv
-eval "$(direnv hook bash)"
+if hash direnv 2>/dev/null; then
+    eval "$(direnv hook bash)"
+fi
