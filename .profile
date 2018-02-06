@@ -250,3 +250,9 @@ export PATH
 if hash direnv 2>/dev/null; then
     eval "$(direnv hook bash)"
 fi
+
+
+# autoenv
+if [ -d "/usr/local/opt/autoenv/" ]; then
+    source /usr/local/opt/autoenv/activate.sh
+fi
