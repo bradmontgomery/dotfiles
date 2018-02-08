@@ -243,5 +243,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
 
-# direnv
-eval "$(direnv hook bash)"
+# autoenv
+source /usr/local/opt/autoenv/activate.sh
