@@ -229,6 +229,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Load the secret env vars.
 source $HOME/Dropbox/dotfiles/secrets.sh
+source $HOME/Dropbox/dotfiles/preteckt.sh
 
 if hash thefuck 2>/dev/null; then
     eval "$(thefuck --alias)"
