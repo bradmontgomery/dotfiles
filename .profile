@@ -229,6 +229,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Load the secret env vars.
 source $HOME/Dropbox/dotfiles/secrets.sh
+source $HOME/Dropbox/dotfiles/preteckt.sh
 
 if hash thefuck 2>/dev/null; then
     eval "$(thefuck --alias)"
@@ -245,6 +246,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # The original version is saved in .profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
+
+# autoenv
+source /usr/local/opt/autoenv/activate.sh
 
 # direnv
 if hash direnv 2>/dev/null; then
