@@ -237,7 +237,7 @@ fi
 
 # Make sure our ssh keys actually work like they're supposed to :-/
 # http://apple.stackexchange.com/a/254714/58762
-ssh-add -A 2>/dev/null;
+# ssh-add -A 2>/dev/null;
 
 # Rust!
 export PATH="$HOME/.cargo/bin:$PATH"
