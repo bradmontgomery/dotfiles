@@ -6,5 +6,3 @@
 .env
 env/
 env27/
-manage.sh
-test.sh
