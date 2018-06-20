@@ -18,8 +18,7 @@ export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
 export PATH="$HOME/Library/Haskell/bin:$PATH"
 
 # Go
-export PATH="$PATH:/usr/local/opt/go/libexec/bin"
-#export GOROOT="/usr/local/opt/go/libexec/bin"
+export PATH="$PATH:/usr/local/go/bin"
 
 # Yarn
 export PATH="$PATH:`yarn global bin`"
