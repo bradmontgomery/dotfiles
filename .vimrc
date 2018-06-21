@@ -18,8 +18,10 @@ set nu
 set nospell
 set ruler
 set encoding=utf-8
-set list
-set listchars=tab:>-
+" Activate the following to display tabs/newlines in code.
+"set list
+"set listchars=tab:>-
+"set listchars=eol:¬,tab:▸-
 
 "set guifont=Monaco:h13
 "set guifont=Ubuntu\ Mono:h18
@@ -116,6 +118,9 @@ autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
 
 " Automatically remove trailing whitespace
 autocmd BufWritePre * :%s/\s\+$//e
+
+" Run gofmt
+autocmd BufWritePre *.go Fmt
 
 " Syntastic. https://github.com/scrooloose/syntastic
 let g:syntastic_lua_checkers=['luac']
