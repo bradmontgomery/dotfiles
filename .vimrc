@@ -120,7 +120,7 @@ autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
 autocmd BufWritePre * :%s/\s\+$//e
 
 " Run gofmt
-autocmd BufWritePre *.go Fmt
+autocmd BufWritePre *.go GoFmt
 
 " Syntastic. https://github.com/scrooloose/syntastic
 let g:syntastic_lua_checkers=['luac']
