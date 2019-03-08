@@ -170,7 +170,6 @@ alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 alias clera=clear
 alias claer=clear
-alias tail='less +F'
 
 # Nifty Python Aliases
 alias nosetests="nosetests --with-yanc"
