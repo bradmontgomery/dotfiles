@@ -93,7 +93,7 @@ let g:flake8_cmd="flake8"
 " Black settings. See: https://github.com/python/black#vim
 autocmd FileType python map <buffer> <F9> :call Black()<CR>
 let g:black_fast=0
-let g:black_linelength=88 (defaults to 88)
+let g:black_linelength=88
 let g:black_skip_string_normalization=0
 let g:black_virtualenv="black"
 " NOTE: The above requires black to be installed & callable where you launch
