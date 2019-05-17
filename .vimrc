@@ -90,6 +90,15 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 let g:flake8_cmd="flake8"
 
+" Black settings. See: https://github.com/python/black#vim
+autocmd FileType python map <buffer> <F9> :call Black()<CR>
+let g:black_fast=0
+let g:black_linelength=88 (defaults to 88)
+let g:black_skip_string_normalization=0
+let g:black_virtualenv="black"
+" NOTE: The above requires black to be installed & callable where you launch
+" vim; (presumabley in a project's virtualenv directory)
+
 " working with legacy python, so ignore:
 " - E111 indentation is not a multiple of four errors
 " - E121 continuation line indentation is not a multiple of four
