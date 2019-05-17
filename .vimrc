@@ -95,9 +95,7 @@ autocmd FileType python map <buffer> <F9> :call Black()<CR>
 let g:black_fast=0
 let g:black_linelength=88
 let g:black_skip_string_normalization=0
-let g:black_virtualenv="black"
-" NOTE: The above requires black to be installed & callable where you launch
-" vim; (presumabley in a project's virtualenv directory)
+let g:black_virtualenv="~/.vim/black"
 
 " working with legacy python, so ignore:
 " - E111 indentation is not a multiple of four errors
