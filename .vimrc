@@ -91,7 +91,7 @@ autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 let g:flake8_cmd="flake8"
 
 " Black settings. See: https://github.com/python/black#vim
-autocmd FileType python map <buffer> <F9> :call Black()<CR>
+autocmd FileType python map <buffer> <F9> :Black<CR>
 let g:black_fast=0
 let g:black_linelength=88
 let g:black_skip_string_normalization=0
