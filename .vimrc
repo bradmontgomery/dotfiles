@@ -97,7 +97,8 @@ let g:black_linelength=88
 let g:black_skip_string_normalization=0
 let g:black_virtualenv="~/.vim/black"
 
-" working with legacy python, so ignore:
+" Flake8 Ingore Settings (i.e. if working with legacy python, or disabling
+" checks that my conflict with Black)
 " - E111 indentation is not a multiple of four errors
 " - E121 continuation line indentation is not a multiple of four
 " - E123 closing bracket does not match indentation of opening bracket's line
@@ -118,7 +119,7 @@ let g:black_virtualenv="~/.vim/black"
 " - E501 line too long
 " - E711 comparison to None should be 'if cond is not None:'
 " - E712 comparison to False should be 'if cond is False:' or 'if not cond:'
-"let g:flake8_ignore="E111,E121,E123,E124,E127,E128,E201,E202,E203,E221,E225,E226,E231,E251,E265,E302,E303,E501,E711,E712"
+let g:flake8_ignore="E203"
 
 " Ruby syntax checking
 autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
