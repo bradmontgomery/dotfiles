@@ -163,6 +163,7 @@ alias hig='history | grep --color'
 alias top=htop
 alias get=git
 alias gti=git
+alias tags='git tag -l | sort -V'
 alias br='git branch'
 alias st='git status'
 alias prune='git remote prune origin'
