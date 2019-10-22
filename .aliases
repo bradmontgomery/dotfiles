@@ -1,8 +1,8 @@
 # Aliases
-alias ls='ls -G'
-alias ll='ls -lhG'
-alias l='ls -lhG'
-alias la='ls -ahG'
+#alias ls='ls -G'
+#alias ll='ls -lhG'
+#alias l='ls -lhG'
+#alias la='ls -ahG'
 alias hig='history | grep --color'
 alias top=htop
 alias get=git
@@ -19,7 +19,7 @@ alias claer=clear
 # Nifty Python Aliases
 alias nosetests="nosetests --with-yanc"
 alias email='python -m smtpd -n -c DebuggingServer localhost:1025'
-alias serve='python -m SimpleHTTPServer'
+alias serve='python3 -m http.server'
 alias rmpyc='find ./ -type f -name "*.pyc" -exec rm {} \;'
 alias mp3player="find . -name '*.mp3' -exec afplay '{}' \;"
 alias m4aplayer="find . -name '*.m4a' -exec afplay '{}' \;"
