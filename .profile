@@ -2,7 +2,7 @@
 PS1='\[\033[48;5;233;38;5;87m\]../\W\[\033[0m\] \[\033[33m\]`git branch 2> /dev/null | grep -e ^* | sed -E  s/^\\\\\*\ \(.+\)$/\<\\\\\1\>\ /`\[\033[01;32m\]$\[\033[0m\] '
 
 # Load environment variables.
-source $HOME/dotfiles/.environment
+source $HOME/dotfiles/.environments
 
 # Load my aliases.
 source $HOME/dotfiles/.aliases
