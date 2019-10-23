@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenv)
+plugins=(autoenv git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,4 +95,5 @@ fi
 # For a full list of active aliases, run `alias`.
 source $HOME/dotfiles/.aliases
 
-# TODO: figure out how to handle .environments.
+# Source my custom environment variables.
+source $HOME/dotfiles/.environments
