@@ -54,14 +54,3 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # The original version is saved in .profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
 export PATH
-
-# TODO: switch to direnv
-# if hash direnv 2>/dev/null; then
-#     eval "$(direnv hook bash)"
-# fi
-
-# autoenv
-# source /usr/local/opt/autoenv/activate.sh
-# if [ -d "/usr/local/opt/autoenv/" ]; then
-#    source /usr/local/opt/autoenv/activate.sh
-# fi
