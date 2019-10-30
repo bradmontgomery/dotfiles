@@ -1,8 +1,11 @@
 # Aliases
-#alias ls='ls -G'
-#alias ll='ls -lhG'
-#alias l='ls -lhG'
-#alias la='ls -ahG'
+if [ "$0" = "-bash" ]; then
+    # Keep these for bash
+    alias ls='ls -G'
+    alias ll='ls -lhG'
+    alias l='ls -lhG'
+    alias la='ls -ahG'
+fi
 alias hig='history | grep --color'
 alias top=htop
 alias get=git
