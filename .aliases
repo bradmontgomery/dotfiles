@@ -18,6 +18,7 @@ alias knive=knife
 alias VAGRANTDESTROY='vagrant destroy'
 alias clera=clear
 alias claer=clear
+alias mypi=mypy
 
 # A little experiment: shortcuts for ssh'ing into various things
 # The .ssh_hosts file will contain aliases that look like:
