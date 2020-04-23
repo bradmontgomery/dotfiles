@@ -103,3 +103,12 @@ source $HOME/dotfiles/.environments
 
 # Enable direnv: https://direnv.net/docs/hook.html
 eval "$(direnv hook zsh)"
+
+# Allow direnv to update the PS1 to show my active python virtualenv.
+# https://github.com/direnv/direnv/wiki/Python#zsh
+show_virtual_env() {
+  if [[ -n "$VIRTUAL_ENV" && -n "$DIRENV_DIR" ]]; then
+    echo "($(basename $VIRTUAL_ENV))"
+  fi
+}
+PS1='$(show_virtual_env)'$PS1
