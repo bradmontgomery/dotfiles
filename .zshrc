@@ -100,3 +100,6 @@ source $HOME/dotfiles/.environments
 
 # pull in my custome bash functions?
 # source $HOME/dotfiles/.functions
+
+# Enable direnv: https://direnv.net/docs/hook.html
+eval "$(direnv hook zsh)"
