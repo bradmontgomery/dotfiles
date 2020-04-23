@@ -23,10 +23,3 @@ source $HOME/dotfiles/.aliases
 
 # Misc bash functions.
 source $HOME/dotfiles/.functions
-
-# Keep using autoenv for bash (for now)
-source $HOME/dotfiles/.autoenv
-
-# Make sure our ssh keys actually work like they're supposed to :-/
-# http://apple.stackexchange.com/a/254714/58762
-# ssh-add -A 2>/dev/null;
