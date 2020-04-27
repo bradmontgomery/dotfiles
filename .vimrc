@@ -125,9 +125,6 @@ highlight BlueLine guibg=Blue
 autocmd BufReadPost quickfix match BlueLine /\%1l/
 autocmd BufReadPost quickfix nnoremap <buffer> <CR> :execute 'match BlueLine /\%' . line('.') . 'l/'<CR><CR>
 
-" Enable neocomplete
-let g:neocomplete#enable_at_startup = 1
-
 " Highlight search strings
 "set :hls
 
