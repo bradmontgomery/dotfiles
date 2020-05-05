@@ -9,18 +9,23 @@
     safecrlf = true
     editor = vim
     excludesfile = ~/.gitignore_global
+    filemode = true
 [alias]
+    unstage = reset HEAD
+    emrge = merge
     co = checkout
     ci = commit
     comit = commit
     st = status
     stat = status
     br = branch
-    hist = log --pretty=format:\"%Cred%h %Creset%ad | %s%Cgreen%d %Cblue[%an]%Creset\" --graph --date=short
+    hist = log --graph --date=short --pretty=format:\"%Cred%h %Creset%ad | %s%Cgreen%d %Cblue[%an]%Creset\"
     type = cat-file -t
     dump = cat-file -p
+    diff = diff --color
     dif = diff --color
     df = diff --color
+    sl = stash list
 [color]
     ui = true
     branch = true
@@ -43,4 +48,6 @@
 [help]
     autocorrect = 1
 [push]
-	default = simple
+    default = matching
+[pager]
+    branch = false
