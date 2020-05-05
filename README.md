@@ -7,9 +7,9 @@ I'm only human. 🤖
 ----
 
 
-- `.profile` has all my bash stuff.
 - `.zshrc` is mostly a default [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh)
   setup.
+- `.profile` has all my older bash stuff.
 
-Yes, I kinda-storta still use both.
+~~Yes, I kinda-storta still use both.~~
 
