@@ -1,6 +1,12 @@
 #
-# XXX: these are bash functions & may need to be revised.
+# Misc bash functions
 #
+
+function dependablast()
+{
+    git branch -r | awk -F/ '/\/dependabot/{print$2"/"$3"/"$4}' | xargs -I {} git push origin :{}
+}
+
 
 # pip bash completion start
 _pip_completion()
