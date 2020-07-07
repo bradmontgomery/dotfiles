@@ -4,5 +4,6 @@
 *.db
 .vagrant/
 .env
+.envrc
 env/
 env27/
