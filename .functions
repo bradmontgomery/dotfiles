@@ -126,6 +126,12 @@ function fixCamera {
 }
 
 
+# See: https://apple.stackexchange.com/a/366841/58762
+# and: https://superuser.com/questions/647396/reload-mac-audio-drivers-without-rebooting
+function fixAudio{
+    sudo pkill coreaudiod;
+}
+
 # A Function to list all the python classes in a file
 function listclasses()
 {
