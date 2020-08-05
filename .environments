@@ -49,3 +49,6 @@ fi
 
 # Rust!
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# For GPG signing.
+export GPG_TTY=$(tty)
