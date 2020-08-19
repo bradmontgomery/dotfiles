@@ -14,12 +14,7 @@
 "    - restore cursor/window position after formatting
 
 if v:version < 700 || !has('python3')
-    func! __BLACK_MISSING()
-        echo "The black.vim plugin requires vim7.0+ with Python 3.6 support."
-    endfunc
-    command! Black :call __BLACK_MISSING()
-    command! BlackUpgrade :call __BLACK_MISSING()
-    command! BlackVersion :call __BLACK_MISSING()
+    echo "This script requires vim7.0+ with Python 3.6 support."
     finish
 endif
 
@@ -45,34 +40,10 @@ if !exists("g:black_skip_string_normalization")
   let g:black_skip_string_normalization = 0
 endif
 
-python3 << EndPython3
-import collections
+python3 << endpython3
 import os
 import sys
 import vim
-
-
-class Flag(collections.namedtuple("FlagBase", "name, cast")):
-  @property
-  def var_name(self):
-    return self.name.replace("-", "_")
-
-  @property
-  def vim_rc_name(self):
-    name = self.var_name
-    if name == "line_length":
-      name = name.replace("_", "")
-    if name == "string_normalization":
-      name = "skip_" + name
-    return "g:black_" + name
-
-
-FLAGS = [
-  Flag(name="line_length", cast=int),
-  Flag(name="fast", cast=bool),
-  Flag(name="string_normalization", cast=bool),
-]
-
 
 def _get_python_binary(exec_prefix):
   try:
@@ -110,23 +81,13 @@ def _initialize_black_env(upgrade=False):
   if not virtualenv_path.is_dir():
     print('Please wait, one time setup for Black.')
     _executable = sys.executable
-    _base_executable = getattr(sys, "_base_executable", _executable)
     try:
-      executable = str(_get_python_binary(Path(sys.exec_prefix)))
-      sys.executable = executable
-      sys._base_executable = executable
+      sys.executable = str(_get_python_binary(Path(sys.exec_prefix)))
       print(f'Creating a virtualenv in {virtualenv_path}...')
       print('(this path can be customized in .vimrc by setting g:black_virtualenv)')
       venv.create(virtualenv_path, with_pip=True)
-    except Exception:
-      print('Encountered exception while creating virtualenv (see traceback below).')
-      print(f'Removing {virtualenv_path}...')
-      import shutil
-      shutil.rmtree(virtualenv_path)
-      raise
     finally:
       sys.executable = _executable
-      sys._base_executable = _base_executable
     first_install = True
   if first_install:
     print('Installing Black with pip...')
@@ -138,7 +99,7 @@ def _initialize_black_env(upgrade=False):
   if first_install:
     print('Pro-tip: to upgrade Black in the future, use the :BlackUpgrade command and restart Vim.\n')
   if virtualenv_site_packages not in sys.path:
-    sys.path.insert(0, virtualenv_site_packages)
+    sys.path.append(virtualenv_site_packages)
   return True
 
 if _initialize_black_env():
@@ -147,20 +108,15 @@ if _initialize_black_env():
 
 def Black():
   start = time.time()
-  configs = get_configs()
+  fast = bool(int(vim.eval("g:black_fast")))
   mode = black.FileMode(
-    line_length=configs["line_length"],
-    string_normalization=configs["string_normalization"],
+    line_length=int(vim.eval("g:black_linelength")),
+    string_normalization=not bool(int(vim.eval("g:black_skip_string_normalization"))),
     is_pyi=vim.current.buffer.name.endswith('.pyi'),
   )
-
   buffer_str = '\n'.join(vim.current.buffer) + '\n'
   try:
-    new_buffer_str = black.format_file_contents(
-      buffer_str,
-      fast=configs["fast"],
-      mode=mode,
-    )
+    new_buffer_str = black.format_file_contents(buffer_str, fast=fast, mode=mode)
   except black.NothingChanged:
     print(f'Already well formatted, good job. (took {time.time() - start:.4f}s)')
   except Exception as exc:
@@ -182,26 +138,13 @@ def Black():
         window.cursor = (len(window.buffer), 0)
     print(f'Reformatted in {time.time() - start:.4f}s.')
 
-def get_configs():
-  path_pyproject_toml = black.find_pyproject_toml(vim.eval("fnamemodify(getcwd(), ':t')"))
-  if path_pyproject_toml:
-    toml_config = black.parse_pyproject_toml(path_pyproject_toml)
-  else:
-    toml_config = {}
-
-  return {
-    flag.var_name: flag.cast(toml_config.get(flag.name, vim.eval(flag.vim_rc_name)))
-    for flag in FLAGS
-  }
-
-
 def BlackUpgrade():
   _initialize_black_env(upgrade=True)
 
 def BlackVersion():
   print(f'Black, version {black.__version__} on Python {sys.version}.')
 
-EndPython3
+endpython3
 
 command! Black :py3 Black()
 command! BlackUpgrade :py3 BlackUpgrade()
