@@ -20,7 +20,11 @@ export PATH="$HOME/Library/Haskell/bin:$PATH"
 export PATH="$PATH:/usr/local/go/bin"
 
 # Yarn
-export PATH="$PATH:`yarn global bin`"
+if type yarn > /dev/null; then
+    export PATH="$PATH:`yarn global bin`"
+else
+    echo "yarn is not installed"
+fi
 
 # Load stuff for android
 if [ -e ~/Library/Android/sdk/platform-tools ]; then
