@@ -1,9 +1,0 @@
-# Continue using autoenv for bash.
-# https://github.com/inishchith/autoenv
-if [ "$0"  = "-bash" ]; then
-
-    if [ -d "/usr/local/opt/autoenv/" ]; then
-        source /usr/local/opt/autoenv/activate.sh
-    fi
-
-fi
