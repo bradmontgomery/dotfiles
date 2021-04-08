@@ -90,7 +90,8 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 let g:flake8_cmd="flake8"
 
-" Black settings. See: https://github.com/python/black#vim
+" Black settings. See editor integration docs:
+" https://github.com/psf/black/blob/master/docs/editor_integration.md#vim
 autocmd BufWritePre *.py execute ':Black'
 noremap <F9> :Black<CR>
 let g:black_fast=0
