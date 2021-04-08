@@ -20,6 +20,11 @@ alias clera=clear
 alias claer=clear
 alias mypi=mypy
 
+# pgcli
+if [ -e ~/pgcli/env/bin/pgcli ]; then
+    alias pgcli=~/pgcli/env/bin/pgcli
+fi
+
 # A little experiment: shortcuts for ssh'ing into various things
 # The .ssh_hosts file will contain aliases that look like:
 #
