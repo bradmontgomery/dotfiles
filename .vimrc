@@ -90,6 +90,11 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 let g:flake8_cmd="flake8"
 
+" vim-isort -- https://github.com/fisadev/vim-isort
+let g:vim_isort_map = '<C-i>'
+let g:vim_isort_python_version = 'python3'
+autocmd BufWritePre *.py Isort
+
 " Black settings. See editor integration docs:
 " https://github.com/psf/black/blob/master/docs/editor_integration.md#vim
 autocmd BufWritePre *.py execute ':Black'
