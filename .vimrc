@@ -96,13 +96,14 @@ let g:vim_isort_python_version = 'python3'
 autocmd BufWritePre *.py Isort
 
 " Black settings. See editor integration docs:
-" https://github.com/psf/black/blob/master/docs/editor_integration.md#vim
+" https://black.readthedocs.io/en/stable/integrations/editors.html#vim
 autocmd BufWritePre *.py execute ':Black'
 noremap <F9> :Black<CR>
 let g:black_fast=0
-let g:black_linelength=88
+let g:black_linelength=100
 let g:black_skip_string_normalization=0
 let g:black_virtualenv="/Users/brad/.vim/black"
+let g:black_quiet=0
 
 " Ruby syntax checking
 autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
