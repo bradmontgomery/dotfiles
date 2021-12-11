@@ -102,7 +102,7 @@ noremap <F9> :Black<CR>
 let g:black_fast=0
 let g:black_linelength=88
 let g:black_skip_string_normalization=0
-let g:black_virtualenv="~/.vim/black"
+let g:black_virtualenv="/Users/brad/.vim/black"
 
 " Ruby syntax checking
 autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
