@@ -74,6 +74,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+# Include /opt/bin
+export PATH=/opt/bin:$PATH
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -112,3 +115,7 @@ show_virtual_env() {
   fi
 }
 PS1='$(show_virtual_env)'$PS1
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
