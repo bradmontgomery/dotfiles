@@ -3,6 +3,8 @@
 *.pyc
 *.db
 .vagrant/
+.coverage
+*.coverage
 .env
 .envrc
 env/
@@ -10,3 +12,4 @@ env27/
 env38/
 env39/
 env310/
+*.egg-info/

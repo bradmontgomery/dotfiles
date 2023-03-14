@@ -42,7 +42,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 # Dropbox path
 if [ -e ~/mnt/d/Dropbox ]; then
-    export DROPBOXPATH=/mnd/d/Dropbox
+    export DROPBOXPATH=/mnt/d/Dropbox
 else
     export DROPBOXPATH=$HOME/Dropbox
 fi
