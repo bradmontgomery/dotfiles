@@ -7,38 +7,14 @@ export PATH="/usr/local/sbin:$PATH"
 # HDF5 utils.
 export PATH="/usr/local/opt/hdf5@1.8/bin:$PATH"
 
-# Prefer Postgres.app's binaries.
-export PATH="/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH"
-
-# Make Haskell's stuff available
-export PATH="$HOME/Library/Haskell/bin:$PATH"
-
 # Go
 export PATH="$PATH:/usr/local/go/bin"
 
-# Yarn
-if type yarn > /dev/null; then
-    export PATH="$PATH:`yarn global bin`"
-else
-    echo "yarn is not installed"
-fi
-
-# Load stuff for android
-if [ -e ~/Library/Android/sdk/platform-tools ]; then
-    export PATH=${PATH}:~/Library/Android/sdk/tools
-    export PATH=${PATH}:~/Library/Android/sdk/platform-tools
-fi
-
-# Packer
-export PATH="/usr/local/packer:$PATH"
-
-# create some environment variables for svn
+# environment variables for editors
 export SVN_EDITOR=/usr/bin/vim
 export VISUAL=/usr/bin/vim
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/gvim
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 # Dropbox path
 if [ -e ~/mnt/d/Dropbox ]; then
