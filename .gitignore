@@ -6,6 +6,8 @@ __pycache__
 .ssh_hosts
 .vim/.netrwhist
 .vim/bundle
+.vim/pack
+.vim/plugged
 .vim/black
 .vagrant
 .swp
