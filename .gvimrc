@@ -7,7 +7,7 @@
 "set guifont=Anonymous\ Pro:h13
 
 " Highlight search strings
-set :hls
+set hls
 
 " Hide the toolbar
 set guioptions-=T
