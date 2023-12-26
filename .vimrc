@@ -1,11 +1,9 @@
 " Vim Config!
-" This config has been cobbled together over the years, and the most recent
-" updates have reset a few things. Instead, I want to support the following
-" packages:
-" -- Ctrl-P
-" -- NerdTree: pack/vendor/start/nerdtree
-" -- NERDCommenter: pack/vendor/start/nerdcommenter
-" -- Python: Flake8, isort, Black
+"
+" Now with vim-plug support.
+" https://github.com/junegunn/vim-plug
+"
+" Plugin configs at the BOTTOM of this file.
 
 filetype on
 filetype plugin on
@@ -48,7 +46,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-
 " Pretty color schemes with iTerm2
 " From: http://kevin.colyar.net/2011/01/pretty-vim-color-schemes-in-iterm2/
 set t_Co=256
@@ -78,45 +75,8 @@ autocmd FileType html setlocal shiftwidth=2 tabstop=2
 autocmd FileType htmldjango setlocal shiftwidth=2 tabstop=2
 autocmd FileType sql setlocal shiftwidth=2 tabstop=2
 
-" Syntastic. https://github.com/scrooloose/syntastic
-"let g:syntastic_lua_checkers=['luac']
-"let g:syntastic_javascript_checkers=['eslint']
-"let g:syntastic_javascript_checkers=['jshint']
-
-" NERDCommenter: https://github.com/preservim/nerdcommenter
-" no extra config enabled
-
-" NERDTree: https://github.com/preservim/nerdtree
-" NERDtree tweeks (The first 3 lines will auto-start NERDTree)
-autocmd vimenter * NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-" Quit if NERDTree is the only buffer open, see: https://github.com/scrooloose/nerdtree/issues/21
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
-
-" Use current directory as the CtrlP working directory
-"let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
-
 " Ingore things we dont' want to open in vim.
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc " MacOSX/Linux
-
-" Flake8 settings
-autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
-let g:flake8_cmd="flake8"
-
-" vim-isort -- https://github.com/fisadev/vim-isort
-"let g:vim_isort_map = '<C-i>'
-"let g:vim_isort_python_version = 'python3'
-"autocmd BufWritePre *.py Isort
-
-" Black settings. See editor integration docs:
-" https://black.readthedocs.io/en/stable/integrations/editors.html#vim
-"autocmd BufWritePre *.py execute ':Black'
-"noremap <F9> :Black<CR>
-"let g:black_skip_string_normalization=0
-"let g:black_virtualenv=$HOME .. "/.vim/black"
-"let g:black_quiet=0
 
 " Ruby syntax checking
 "autocmd FileType ruby map <F8> :w<CR>:!ruby -c %<CR>
@@ -144,3 +104,66 @@ set noerrorbells
 set novisualbell
 set t_vb=
 autocmd! GUIEnter * set vb t_vb=
+
+" --------------------------------------
+"
+"  Plug(ins) below.
+"
+"  For Plug commands, see:
+"  https://github.com/junegunn/vim-plug#commands
+"
+" --------------------------------------
+call plug#begin()
+
+Plug 'preservim/nerdcommenter'
+Plug 'preservim/nerdtree'
+"Plug 'kien/ctrlp.vim'
+"Plug 'scrooloose/syntastic'
+"
+Plug 'psf/black', { 'branch': 'stable' }
+Plug 'nvie/vim-flake8'
+Plug 'fisadev/vim-isort'
+
+call plug#end()
+
+" ---- Plugin Configurations ------------------------
+
+" Syntastic. https://github.com/scrooloose/syntastic
+"let g:syntastic_lua_checkers=['luac']
+"let g:syntastic_javascript_checkers=['eslint']
+"let g:syntastic_javascript_checkers=['jshint']
+
+" NERDCommenter: https://github.com/preservim/nerdcommenter
+" no extra config enabled
+
+" NERDTree: https://github.com/preservim/nerdtree
+" NERDtree tweeks (The first 3 lines will auto-start NERDTree)
+autocmd vimenter * NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
+" Quit if NERDTree is the only buffer open, see: https://github.com/scrooloose/nerdtree/issues/21
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
+
+" Use current directory as the CtrlP working directory
+"let g:ctrlp_working_path_mode = 'ra'
+"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
+
+" Flake8 settings: Hit F8 to run flake8
+let g:flake8_cmd="flake8"
+autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
+autocmd BufWritePre *.py Flake8
+
+" vim-isort -- https://github.com/fisadev/vim-isort
+let g:vim_isort_map = ''  " no command, only on save
+let g:vim_isort_python_version = 'python3'
+autocmd BufWritePre *.py Isort
+
+" Black -- Hit F9 to run & run on save
+" See editor integration docs:
+" https://black.readthedocs.io/en/stable/integrations/editors.html#vim
+let g:black_skip_string_normalization=0
+let g:black_linelength=100
+let g:black_quiet=0
+noremap <F9> :Black<CR>
+autocmd BufWritePre *.py execute ':Black'
+
