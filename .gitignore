@@ -7,6 +7,7 @@ __pycache__
 .vim/.netrwhist
 .vim/bundle
 .vim/pack
+.vim/plugged
 .vim/black
 .vagrant
 .swp
