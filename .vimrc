@@ -118,6 +118,8 @@ call plug#begin()
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'kien/ctrlp.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 "Plug 'scrooloose/syntastic'
 
 Plug 'psf/black', { 'branch': 'stable' }
@@ -127,6 +129,9 @@ Plug 'fisadev/vim-isort'
 call plug#end()
 
 " ---- Plugin Configurations ------------------------
+
+" vim-airline theme.
+let g:airline_theme='molokai'
 
 " Syntastic. https://github.com/scrooloose/syntastic
 "let g:syntastic_lua_checkers=['luac']
