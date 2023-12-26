@@ -117,9 +117,9 @@ call plug#begin()
 
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
-"Plug 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 "Plug 'scrooloose/syntastic'
-"
+
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'nvie/vim-flake8'
 Plug 'fisadev/vim-isort'
@@ -144,9 +144,11 @@ autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
 
+" Ctrl-P
+" https://github.com/kien/ctrlp.vim
 " Use current directory as the CtrlP working directory
-"let g:ctrlp_working_path_mode = 'ra'
-"let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
 
 " Flake8 settings: Hit F8 to run flake8
 let g:flake8_cmd="flake8"
