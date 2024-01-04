@@ -109,8 +109,10 @@ autocmd! GUIEnter * set vb t_vb=
 "
 "  Plug(ins) below.
 "
-"  For Plug commands, see:
-"  https://github.com/junegunn/vim-plug#commands
+"  For Plug commands, see: https://github.com/junegunn/vim-plug#commands
+"  - :PlugInstall
+"  - :PlugUpdate
+"  - :PlugUpgrade
 "
 " --------------------------------------
 call plug#begin()
