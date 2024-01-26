@@ -171,7 +171,7 @@ autocmd BufWritePre *.py Isort
 " See editor integration docs:
 " https://black.readthedocs.io/en/stable/integrations/editors.html#vim
 let g:black_skip_string_normalization=0
-let g:black_linelength=100
+let g:black_linelength=120
 let g:black_quiet=0
 noremap <F9> :Black<CR>
 autocmd BufWritePre *.py execute ':Black'
