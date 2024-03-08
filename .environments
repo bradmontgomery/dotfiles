@@ -25,7 +25,6 @@ fi
 
 # Load the secret env vars.
 source $DROPBOXPATH/dotfiles/secrets.sh
-source $DROPBOXPATH/dotfiles/preteckt.sh
 
 if hash thefuck 2>/dev/null; then
     eval "$(thefuck --alias)"
