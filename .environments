@@ -4,8 +4,16 @@
 export PATH="/usr/local/bin:$PATH:$HOME/bin"
 export PATH="/usr/local/sbin:$PATH"
 
+# .Net stuff
+if [ -e ~/.dotnet ]; then
+    export DOTNET_ROOT=$HOME/.dotnet
+    export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+fi
+
 # HDF5 utils.
-export PATH="/usr/local/opt/hdf5@1.8/bin:$PATH"
+if [ -e /usr/local/lopt/hdf5@1.8 ]; then
+    export PATH="/usr/local/opt/hdf5@1.8/bin:$PATH"
+fi
 
 # Go
 export PATH="$PATH:/usr/local/go/bin"
@@ -31,7 +39,9 @@ if hash thefuck 2>/dev/null; then
 fi
 
 # Rust!
-export PATH="$HOME/.cargo/bin:$PATH"
+if [ -e ~/.cargo ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # For GPG signing.
 export GPG_TTY=$(tty)

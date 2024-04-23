@@ -10,6 +10,7 @@
     editor = vim
     excludesfile = ~/.gitignore_global
     filemode = true
+	filmode = false
 [alias]
     unstage = reset HEAD
     emrge = merge
