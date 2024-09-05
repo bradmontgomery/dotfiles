@@ -154,3 +154,8 @@ function loveit()
         zip -9 -q -r $1.love .
     fi
 }
+
+# WSL: Open an explorer window in a WSL directory.
+function start() {
+  cmd.exe /C start "$(wslpath -wa $1)" /C bash
+}
