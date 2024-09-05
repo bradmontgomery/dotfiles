@@ -122,5 +122,8 @@ export NVM_DIR="$HOME/.nvm"
 
 
 # fnm: a node manager. See: https://github.com/Schniz/fnm
-export PATH="/home/brad/.local/share/fnm:$PATH"
+export PATH="$HOME/.local/share/fnm:$PATH"
 eval "`fnm env`"
+
+# Created by `pipx` on 2024-09-05 21:11:14
+export PATH="$PATH:$HOME/.local/bin"
