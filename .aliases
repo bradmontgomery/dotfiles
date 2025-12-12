@@ -20,6 +20,9 @@ alias clera=clear
 alias claer=clear
 alias mypi=mypy
 
+# Kiro CLI
+alias q=kiro-cli
+
 # A little experiment: shortcuts for ssh'ing into various things
 # The .ssh_hosts file will contain aliases that look like:
 #
