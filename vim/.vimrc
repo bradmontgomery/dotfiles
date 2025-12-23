@@ -88,7 +88,7 @@ autocmd BufWritePre * :%s/\s\+$//e
 autocmd BufWritePre *.go GoFmt
 
 " Highlight text whose length is over 100 columns
-set colorcolumn=120 "bright vertical red line at col 100
+set colorcolumn=120 "bright vertical red line at col 120
 highlight ColorColumn ctermbg=darkred guibg=#330000
 highlight OverLength ctermbg=17 ctermfg=white guibg=#592929
 match OverLength /\%121v.\+/

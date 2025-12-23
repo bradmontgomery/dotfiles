@@ -2,7 +2,7 @@
 if [ "$0" = "-bash" ]; then
     # Keep these for bash
     alias ls='ls -G'
-    alias ll='ls -lhG'
+    alias ll='ls -alhG'
     alias l='ls -lhG'
     alias la='ls -ahG'
 fi
