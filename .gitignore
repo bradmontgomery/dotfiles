@@ -1,15 +1,12 @@
-.env
-env/
-env27/
-__pycache__
-.secrets.sh
-.ssh_hosts
-.vim/.netrwhist
-.vim/bundle
-.vim/pack
-.vim/plugged
-.vim/black
-.vagrant
-.swp
+# Vim plugins (managed by vim-plug)
+vim/.vim/plugged/
+vim/.vim/black/
+
+# Generated files
 *.swp
-/node_modules
+*.swo
+*~
+.DS_Store
+
+# Backup files
+*.backup
