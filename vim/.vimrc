@@ -158,11 +158,13 @@ let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
 
 " Flake8 settings: Hit F8 to run flake8
-let g:flake8_cmd="flake8"
+" NOTE: This requires python3-flake8 to be installed (linux)
+let g:flake8_cmd="python3 -m flake8"
 autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
 autocmd BufWritePre *.py Flake8
 
 " vim-isort -- https://github.com/fisadev/vim-isort
+" NOTE: This requires python3-isort to be installed (linux)
 let g:vim_isort_map = ''  " no command, only on save
 let g:vim_isort_python_version = 'python3'
 autocmd BufWritePre *.py Isort
