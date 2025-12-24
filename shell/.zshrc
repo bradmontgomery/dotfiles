@@ -99,13 +99,13 @@ fi
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-source $HOME/dotfiles/.aliases
+source $HOME/.aliases
 
 # Source my custom environment variables.
-source $HOME/dotfiles/.environments
+source $HOME/.environments
 
 # pull in my custome bash functions?
-source $HOME/dotfiles/.functions
+source $HOME/.functions
 
 # Enable direnv: https://direnv.net/docs/hook.html
 eval "$(direnv hook zsh)"
