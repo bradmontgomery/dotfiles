@@ -159,3 +159,15 @@ function loveit()
 function start() {
   cmd.exe /C start "$(wslpath -wa $1)" /C bash
 }
+
+# ADO queries
+# Usage:
+# ado_repos BDI
+# ado_repos AnotherProject
+ado_repos() {
+  local project="${1:?Project name required}"
+  curl -u :$ADO_TOKEN "https://dev.azure.com/StifelFinancial/${project}/_apis/git/repositories?api-version=7.0" | jq -r '.value[].name'
+}
+
+
+
