@@ -43,6 +43,33 @@ encrypt()
     fi
 }
 
+# Encrypt a file using RSA public key encryption (asymmetric).
+# Uses your SSH public key (~/.ssh/id_rsa.pub) to encrypt.
+# Only the holder of the private key can decrypt.
+# Note: RSA can only encrypt small files (~190 bytes). For larger files, use encrypt_large_pub.
+# USAGE: encrypt_pub <plaintext_input> <encrypted_output>
+encrypt_pub()
+{
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "USAGE: encrypt_pub <input> <output>"
+    else
+        ssh-keygen -f ~/.ssh/id_rsa.pub -e -m PKCS8 | openssl rsautl -encrypt -pubin -inkey /dev/stdin -in $1 -out $2
+    fi
+}
+
+# Decrypt a file using RSA private key decryption (asymmetric).
+# Uses your SSH private key (~/.ssh/id_rsa) to decrypt.
+# You may be prompted for your SSH key passphrase if the key is protected.
+# USAGE: decrypt_priv <encrypted_input> <decrypted_output>
+decrypt_priv()
+{
+    if [ -z "$1" ] || [ -z "$2" ]; then
+        echo "USAGE: decrypt_priv <input> <output>"
+    else
+        openssl rsautl -decrypt -inkey ~/.ssh/id_rsa -in $1 -out $2
+    fi
+}
+
 function convert_to_mp3
 {
     if [ -z "$1" ] || [ -z "$2" ]; then
