@@ -145,6 +145,9 @@ if [[ -d "${HOME}/bin" ]]; then
     export PATH=$HOME/bin:$PATH
 fi
 
+# Add snaps to the path
+export PATH=$PATH:/snap/bin
+
 # Set up bash completion
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
