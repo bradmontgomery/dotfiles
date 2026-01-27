@@ -53,20 +53,21 @@ encrypt_pub()
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo "USAGE: encrypt_pub <input> <output>"
     else
-        ssh-keygen -f ~/.ssh/id_rsa.pub -e -m PKCS8 | openssl rsautl -encrypt -pubin -inkey /dev/stdin -in $1 -out $2
+        ssh-keygen -f ~/.ssh/id_rsa.pub -e -m PKCS8 | openssl pkeyutl -encrypt -pubin -inkey /dev/stdin -pkeyopt rsa_padding_mode:pkcs1 -in $1 -out $2
     fi
 }
 
 # Decrypt a file using RSA private key decryption (asymmetric).
-# Uses your SSH private key (~/.ssh/id_rsa) to decrypt.
+# Uses your SSH private key PEM copy (~/.ssh/id_rsa_pem) to decrypt.
 # You may be prompted for your SSH key passphrase if the key is protected.
+# To create the PEM copy: cp ~/.ssh/id_rsa ~/.ssh/id_rsa_pem && ssh-keygen -p -N "" -m pem -f ~/.ssh/id_rsa_pem -P ""
 # USAGE: decrypt_priv <encrypted_input> <decrypted_output>
 decrypt_priv()
 {
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo "USAGE: decrypt_priv <input> <output>"
     else
-        openssl rsautl -decrypt -inkey ~/.ssh/id_rsa -in $1 -out $2
+        openssl pkeyutl -decrypt -inkey ~/.ssh/id_rsa_pem -pkeyopt rsa_padding_mode:pkcs1 -in $1 -out $2
     fi
 }
 
