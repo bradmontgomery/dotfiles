@@ -19,20 +19,27 @@ if type complete > /dev/null; then
 fi
 # pip bash completion end
 
+# Decrypt a file using DES3 symmetric encryption with PBKDF2 key derivation.
+# You will be prompted to enter the password that was used to encrypt the file.
+# USAGE: decrypt <encrypted_input> <decrypted_output>
 decrypt()
 {
     if [ -z "$1" ] || [ -z "$2" ]; then
         echo "USAGE: decrypt <input> <output>"
     else
-        openssl des3 -d -salt -in $1 -out $2
+        openssl des3 -d -salt -pbkdf2 -in $1 -out $2
     fi
 }
+
+# Encrypt a file using DES3 symmetric encryption with PBKDF2 key derivation.
+# You will be prompted to enter and verify a password to encrypt the file.
+# USAGE: encrypt <plaintext_input> <encrypted_output>
 encrypt()
 {
     if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "USAGE: decrypt <input> <output>"
+        echo "USAGE: encrypt <input> <output>"
     else
-        openssl des3 -salt -in $1 -out $2
+        openssl des3 -salt -pbkdf2 -in $1 -out $2
     fi
 }
 
