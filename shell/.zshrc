@@ -154,3 +154,8 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/.local/share/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/.local/share/kiro-cli/shell/zshrc.post.zsh"
+
+# opencode
+if [[ -d "${HOME}/.opencode/bin" ]]; then
+    export PATH=/home/brad/.opencode/bin:$PATH
+fi
