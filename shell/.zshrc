@@ -136,7 +136,7 @@ complete -C '/usr/local/bin/aws_completer' aws
 # fnm: a node manager. See: https://github.com/Schniz/fnm
 FNM_PATH="/home/brad/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
+  export PATH="$FNM_PATH:$PATH"
   eval "`fnm env`"
 fi
 
