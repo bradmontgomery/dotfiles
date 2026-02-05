@@ -1,6 +1,18 @@
 #
 # Misc bash functions
 #
+
+# Detect OS and load platform-specific functions
+case "$(uname -s)" in
+    Darwin)
+        [[ -f ~/.functions.macos ]] && source ~/.functions.macos
+        ;;
+    Linux)
+        if grep -qi microsoft /proc/version 2>/dev/null; then
+            [[ -f ~/.functions.wsl ]] && source ~/.functions.wsl
+        fi
+        ;;
+esac
 function dependablast()
 {
     git branch -r | awk -F/ '/\/dependabot/{print$2"/"$3"/"$4}' | xargs -I {} git push origin :{}
@@ -14,7 +26,55 @@ if type complete > /dev/null; then
         COMPREPLY=( $( COMP_WORDS="${COMP_WORDS[*]}" \
                        COMP_CWORD=$COMP_CWORD \
                        PIP_AUTO_COMPLETE=1 $1 ) )
-    }
+}
+
+
+# ==============================================================================
+# OS Detection Helpers
+# ==============================================================================
+
+# Utility function for OS detection
+# USAGE: get_os_type
+# Returns: "macos", "linux", "wsl", "unknown"
+function get_os_type() {
+    local os_type
+    case "$(uname -s)" in
+        Darwin)
+            os_type="macos"
+            ;;
+        Linux)
+            if grep -qi microsoft /proc/version 2>/dev/null; then
+                os_type="wsl"
+            else
+                os_type="linux"
+            fi
+            ;;
+        *)
+            os_type="unknown"
+            ;;
+    esac
+    echo "$os_type"
+}
+
+# Utility function to check if running on macOS
+# USAGE: is_macos && echo "On macOS"
+function is_macos() {
+    [[ "$(get_os_type)" == "macos" ]]
+}
+
+# Utility function to check if running on WSL
+# USAGE: is_wsl && echo "On WSL"
+function is_wsl() {
+    [[ "$(get_os_type)" == "wsl" ]]
+}
+
+# Utility function to check if running on Linux (non-WSL)
+# USAGE: is_linux && echo "On Linux"
+function is_linux() {
+    [[ "$(get_os_type)" == "linux" ]]
+}
+
+
     complete -o default -F _pip_completion pip
 fi
 # pip bash completion end
@@ -24,11 +84,15 @@ fi
 # USAGE: decrypt <encrypted_input> <decrypted_output>
 decrypt()
 {
-    if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "USAGE: decrypt <input> <output>"
-    else
-        openssl des3 -d -salt -pbkdf2 -in $1 -out $2
+    if [[ $# -ne 2 ]]; then
+        echo "USAGE: decrypt <input> <output>" >&2
+        return 1
     fi
+    if [[ ! -f "$1" ]]; then
+        echo "Error: Input file not found: $1" >&2
+        return 1
+    fi
+    openssl des3 -d -salt -pbkdf2 -in "$1" -out "$2"
 }
 
 # Encrypt a file using DES3 symmetric encryption with PBKDF2 key derivation.
@@ -36,11 +100,15 @@ decrypt()
 # USAGE: encrypt <plaintext_input> <encrypted_output>
 encrypt()
 {
-    if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "USAGE: encrypt <input> <output>"
-    else
-        openssl des3 -salt -pbkdf2 -in $1 -out $2
+    if [[ $# -ne 2 ]]; then
+        echo "USAGE: encrypt <input> <output>" >&2
+        return 1
     fi
+    if [[ ! -f "$1" ]]; then
+        echo "Error: Input file not found: $1" >&2
+        return 1
+    fi
+    openssl des3 -salt -pbkdf2 -in "$1" -out "$2"
 }
 
 # Encrypt a file using RSA public key encryption (asymmetric).
@@ -50,11 +118,19 @@ encrypt()
 # USAGE: encrypt_pub <plaintext_input> <encrypted_output>
 encrypt_pub()
 {
-    if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "USAGE: encrypt_pub <input> <output>"
-    else
-        ssh-keygen -f ~/.ssh/id_rsa.pub -e -m PKCS8 | openssl pkeyutl -encrypt -pubin -inkey /dev/stdin -pkeyopt rsa_padding_mode:pkcs1 -in $1 -out $2
+    if [[ $# -ne 2 ]]; then
+        echo "USAGE: encrypt_pub <input> <output>" >&2
+        return 1
     fi
+    if [[ ! -f "$1" ]]; then
+        echo "Error: Input file not found: $1" >&2
+        return 1
+    fi
+    if [[ ! -f ~/.ssh/id_rsa.pub ]]; then
+        echo "Error: SSH public key not found at ~/.ssh/id_rsa.pub" >&2
+        return 1
+    fi
+    ssh-keygen -f ~/.ssh/id_rsa.pub -e -m PKCS8 | openssl pkeyutl -encrypt -pubin -inkey /dev/stdin -pkeyopt rsa_padding_mode:pkcs1 -in "$1" -out "$2"
 }
 
 # Decrypt a file using RSA private key decryption (asymmetric).
@@ -64,61 +140,77 @@ encrypt_pub()
 # USAGE: decrypt_priv <encrypted_input> <decrypted_output>
 decrypt_priv()
 {
-    if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "USAGE: decrypt_priv <input> <output>"
-    else
-        openssl pkeyutl -decrypt -inkey ~/.ssh/id_rsa_pem -pkeyopt rsa_padding_mode:pkcs1 -in $1 -out $2
+    if [[ $# -ne 2 ]]; then
+        echo "USAGE: decrypt_priv <input> <output>" >&2
+        return 1
     fi
+    if [[ ! -f "$1" ]]; then
+        echo "Error: Input file not found: $1" >&2
+        return 1
+    fi
+    if [[ ! -f ~/.ssh/id_rsa_pem ]]; then
+        echo "Error: SSH private key PEM copy not found at ~/.ssh/id_rsa_pem" >&2
+        echo "Create it with: cp ~/.ssh/id_rsa ~/.ssh/id_rsa_pem && ssh-keygen -p -N \"\" -m pem -f ~/.ssh/id_rsa_pem -P \"\"" >&2
+        return 1
+    fi
+    openssl pkeyutl -decrypt -inkey ~/.ssh/id_rsa_pem -pkeyopt rsa_padding_mode:pkcs1 -in "$1" -out "$2"
 }
 
 function convert_to_mp3
 {
-    if [ -z "$1" ] || [ -z "$2" ]; then
-        echo "USAGE: convert_to_mp3 <input_file> <output_file.mp3>"
-    else
-        ffmpeg -i $1 -acodec mp3 $2
+    if [[ $# -ne 2 ]]; then
+        echo "USAGE: convert_to_mp3 <input_file> <output_file.mp3>" >&2
+        return 1
     fi
-}
-
-function pyg()
-{
-    if [ -z "$1" ]; then
-        echo "USAGE: pyg <input>"
-    else
-        echo "Running: pygmentize -f rtf $1 | pbcopy"
-        pygmentize -f rtf $1 | pbcopy
+    if [[ ! -f "$1" ]]; then
+        echo "Error: Input file not found: $1" >&2
+        return 1
     fi
+    if ! command -v ffmpeg &>/dev/null; then
+        echo "Error: ffmpeg not installed" >&2
+        return 1
+    fi
+    ffmpeg -i "$1" -acodec mp3 "$2"
 }
 
 function png2gif
 {
     ## TODO: Make -r <rate> an input value.
-    if [ -z "$1" ]; then
-        echo "USAGE: png2gif <Filename> -- provide filename without -x.png, "
-        echo "     e.g. ToastFox-1.png, ToastFox-2.png --> png2gif ToastFox "
-    else
-        FILE_PATTERN="$1-%d.png";
-        OUTPUT="$1.gif";
-        ffmpeg -f image2 -i $FILE_PATTERN -vcodec copy tmp-video.mkv && \
-        ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 5 $OUTPUT;
-        rm tmp-video.mkv
+    if [[ -z "$1" ]]; then
+        echo "USAGE: png2gif <Filename> -- provide filename without -x.png" >&2
+        echo "     e.g. ToastFox-1.png, ToastFox-2.png --> png2gif ToastFox" >&2
+        return 1
     fi
+    if ! command -v ffmpeg &>/dev/null; then
+        echo "Error: ffmpeg not installed" >&2
+        return 1
+    fi
+    FILE_PATTERN="$1-%d.png"
+    OUTPUT="$1.gif"
+    ffmpeg -f image2 -i "$FILE_PATTERN" -vcodec copy tmp-video.mkv && \
+    ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 5 "$OUTPUT"
+    rm tmp-video.mkv
 }
+
 
 function jpg2gif
 {
     # TODO: Make -r <rate> an input value.
     # TODO: figure out how to control speed :-/
-    if [ -z "$1" ]; then
-        echo "USAGE: jpg2gif <Filename> -- provide filename without -x.jpg, "
-        echo "     e.g. ToastFox-1.jpg, ToastFox-2.jpg --> jpg2gif ToastFox "
-    else
-        FILE_PATTERN="$1-%d.jpg";
-        OUTPUT="$1.gif";
-        ffmpeg -f image2 -i $FILE_PATTERN -vcodec copy tmp-video.mkv && \
-        ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 20 -frames 6 -vframes 6 $OUTPUT;
-        rm tmp-video.mkv
+    if [[ -z "$1" ]]; then
+        echo "USAGE: jpg2gif <Filename> -- provide filename without -x.jpg" >&2
+        echo "     e.g. ToastFox-1.jpg, ToastFox-2.jpg --> jpg2gif ToastFox" >&2
+        return 1
     fi
+    if ! command -v ffmpeg &>/dev/null; then
+        echo "Error: ffmpeg not installed" >&2
+        return 1
+    fi
+    FILE_PATTERN="$1-%d.jpg"
+    OUTPUT="$1.gif"
+    ffmpeg -f image2 -i "$FILE_PATTERN" -vcodec copy tmp-video.mkv && \
+    ffmpeg -i tmp-video.mkv -pix_fmt rgb24 -loop 0 -r 20 -frames 6 -vframes 6 "$OUTPUT"
+    rm tmp-video.mkv
 }
 
 
@@ -126,8 +218,20 @@ function timerequest
 {
     # Use curl to TIME http requests.
     # Inspired by this: http://stackoverflow.com/a/22625150/182778
+    # USAGE: timerequest <url>
+    # Dependencies: curl
 
-   FMT="
+    if [[ -z "$1" ]]; then
+        echo "USAGE: timerequest <url>" >&2
+        return 1
+    fi
+
+    if ! command -v curl &>/dev/null; then
+        echo "Error: curl not installed" >&2
+        return 1
+    fi
+
+    FMT="
          http_code:  %{http_code}
      size_download:  %{size_download}
        size_header:  %{size_header}
@@ -141,67 +245,78 @@ time_starttransfer:  %{time_starttransfer}
                    ----------
         time_total:  %{time_total}
     "
-    curl -w "$FMT" -o /dev/null -s $1
+    curl -w "$FMT" -o /dev/null -s "$1"
 }
 
 
 function fnd
 {
     # find but with a syntax I can remember.
-    if [ -z "$1" ]; then
-        echo "USAGE: fnd <pattern>"
-    else
-        find . -name "$1" -print
+    # USAGE: fnd <pattern>
+    if [[ -z "$1" ]]; then
+        echo "USAGE: fnd <pattern>" >&2
+        return 1
     fi
-}
-
-# http://osxdaily.com/2013/12/27/fix-there-is-no-connected-camera-error-mac/
-function fixCamera {
-    sudo killall AppleCameraAssistant;
-    sudo killall VDCAssistant;
-}
-
-
-# See: https://apple.stackexchange.com/a/366841/58762
-# and: https://superuser.com/questions/647396/reload-mac-audio-drivers-without-rebooting
-function fixAudio {
-    sudo pkill coreaudiod;
+    find . -name "$1" -print
 }
 
 # A Function to list all the python classes in a file
+# USAGE: listclasses [filename]
 function listclasses()
 {
-    if [ -z "$1" ]; then
+    if [[ -z "$1" ]]; then
         F="models.py"
     else
         F="$1"
     fi
-    cat $F | grep "^class " | sed "s/class //" | sed "s/(.*$//" | sort
+    if [[ ! -f "$F" ]]; then
+        echo "Error: File not found: $F" >&2
+        return 1
+    fi
+    cat "$F" | grep "^class " | sed "s/class //" | sed "s/(.*$//" | sort
 }
 alias listmodels=listclasses | grep -v Manager
 
 # A little function to zip up the current directory contents into a .love file.
+# USAGE: loveit <name>
+# Dependencies: zip
 function loveit()
 {
-    if [ -z "$1" ]; then
-        echo "USAGE: loveit <name>"
-    else
-        zip -9 -q -r $1.love .
+    if [[ -z "$1" ]]; then
+        echo "USAGE: loveit <name>" >&2
+        return 1
     fi
-}
-
-# WSL: Open an explorer window in a WSL directory.
-function start() {
-  cmd.exe /C start "$(wslpath -wa $1)" /C bash
+    if ! command -v zip &>/dev/null; then
+        echo "Error: zip not installed" >&2
+        return 1
+    fi
+    zip -9 -q -r "$1.love" .
 }
 
 # ADO queries
 # Usage:
 # ado_repos BDI
 # ado_repos AnotherProject
+# Dependencies: curl, jq, ADO_TOKEN environment variable (from secrets.sh)
 ado_repos() {
-  local project="${1:?Project name required}"
-  curl -u :$ADO_TOKEN "https://dev.azure.com/StifelFinancial/${project}/_apis/git/repositories?api-version=7.0" | jq -r '.value[].name'
+    if [[ -z "$ADO_TOKEN" ]]; then
+        echo "Error: ADO_TOKEN environment variable not set" >&2
+        echo "Set it in ~/Dropbox/dotfiles/secrets.sh" >&2
+        return 1
+    fi
+
+    if ! command -v jq &>/dev/null; then
+        echo "Error: jq not installed" >&2
+        return 1
+    fi
+
+    if ! command -v curl &>/dev/null; then
+        echo "Error: curl not installed" >&2
+        return 1
+    fi
+
+    local project="${1:?Project name required}"
+    curl -u ":$ADO_TOKEN" "https://dev.azure.com/StifelFinancial/${project}/_apis/git/repositories?api-version=7.0" | jq -r '.value[].name'
 }
 
 

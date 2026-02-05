@@ -1,0 +1,35 @@
+# DO NOT COMMIT THIS FILE
+#
+# This file contains local-only git configuration (e.g., credentials, machine-specific settings).
+# Copy this template to ~/.gitconfig.local and fill in your values.
+# 
+# Git automatically includes .gitconfig.local if it exists, so settings here will override
+# the main .gitconfig without requiring any changes to tracked files.
+#
+# See: https://git-scm.com/docs/git-config#FILES
+
+[github]
+    user = your-github-username
+    # To generate a token: https://github.com/settings/tokens
+    # Personal access tokens are sourced from environment variables in secrets.sh
+    # Uncomment below if using local credentials instead:
+    # token = your-github-personal-access-token
+
+[credential]
+    # Credentials helper configuration
+    # Options: store, cache, osxkeychain (macOS)
+    # Using 'store' is less secure - consider osxkeychain on macOS
+    helper = store
+
+[user]
+    # Uncomment below to override the global user config for this machine
+    # name = Your Name
+    # email = your.email@example.com
+
+[core]
+    # Uncomment below for machine-specific editor
+    # editor = vim
+
+# Example: machine-specific merge tool
+# [merge]
+#     tool = vimdiff

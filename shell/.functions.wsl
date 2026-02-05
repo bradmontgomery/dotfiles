@@ -1,0 +1,26 @@
+#!/bin/bash
+#
+# WSL-specific utility functions
+#
+
+# Open an explorer window in a WSL directory
+# USAGE: start <path>
+# Dependencies: Windows, WSL, wslpath command
+function start() {
+    if [[ -z "$1" ]]; then
+        echo "USAGE: start <path>" >&2
+        return 1
+    fi
+
+    if [[ ! -d "$1" ]]; then
+        echo "Error: Directory not found: $1" >&2
+        return 1
+    fi
+
+    if ! command -v wslpath &>/dev/null; then
+        echo "Error: wslpath not available (not in WSL?)" >&2
+        return 1
+    fi
+
+    cmd.exe /C start "$(wslpath -wa "$1")" /C bash
+}

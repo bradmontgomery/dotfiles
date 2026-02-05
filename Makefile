@@ -6,11 +6,12 @@ install:
 
 uninstall:
 	@echo "Removing dotfiles symlinks..."
-	@rm -f ~/.zshrc ~/.profile ~/.aliases ~/.functions ~/.environments
+	@rm -f ~/.zshrc ~/.profile ~/.aliases ~/.functions ~/.functions.macos ~/.functions.wsl ~/.environments
 	@rm -f ~/.gitconfig ~/.gitignore_global
 	@rm -f ~/.vimrc ~/.gvimrc ~/.vim
 	@rm -f ~/.pypirc ~/.isort.cfg ~/.node-version ~/.psqlrc
 	@rm -f ~/.irbrc ~/.gemrc ~/.rspec
 	@rm -f ~/.hgrc
 	@rm -f ~/.docker/desktop/backend.sock
+	@rm -f ~/.config/opencode/opencode.json
 	@echo "Dotfiles uninstalled!"

@@ -1,0 +1,46 @@
+#!/bin/bash
+#
+# macOS-specific utility functions
+#
+
+# Fix camera issues on macOS
+# See: http://osxdaily.com/2013/12/27/fix-there-is-no-connected-camera-error-mac/
+function fixCamera() {
+    sudo killall AppleCameraAssistant
+    sudo killall VDCAssistant
+}
+
+# Fix audio issues on macOS
+# See: https://apple.stackexchange.com/a/366841/58762
+# and: https://superuser.com/questions/647396/reload-mac-audio-drivers-without-rebooting
+function fixAudio() {
+    sudo pkill coreaudiod
+}
+
+# Syntax highlight code and copy to clipboard (macOS only)
+# USAGE: pyg <file>
+# Dependencies: pygmentize (requires: pip install pygments)
+function pyg() {
+    if [[ -z "$1" ]]; then
+        echo "USAGE: pyg <file>" >&2
+        return 1
+    fi
+
+    if [[ ! -f "$1" ]]; then
+        echo "Error: File not found: $1" >&2
+        return 1
+    fi
+
+    if ! command -v pygmentize &>/dev/null; then
+        echo "Error: pygmentize not installed. Install with: pip install pygments" >&2
+        return 1
+    fi
+
+    if ! command -v pbcopy &>/dev/null; then
+        echo "Error: pbcopy not available (not on macOS?)" >&2
+        return 1
+    fi
+
+    pygmentize -f rtf "$1" | pbcopy
+    echo "Copied syntax-highlighted output to clipboard"
+}

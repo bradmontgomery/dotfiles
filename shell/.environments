@@ -5,13 +5,13 @@ export PATH="/usr/local/bin:$PATH:$HOME/bin"
 export PATH="/usr/local/sbin:$PATH"
 
 # .Net stuff
-if [ -e ~/.dotnet ]; then
+if [[ -e ~/.dotnet ]]; then
     export DOTNET_ROOT=$HOME/.dotnet
     export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
 fi
 
 # HDF5 utils.
-if [ -e /usr/local/lopt/hdf5@1.8 ]; then
+if [[ -e /usr/local/opt/hdf5@1.8 ]]; then
     export PATH="/usr/local/opt/hdf5@1.8/bin:$PATH"
 fi
 
@@ -32,16 +32,25 @@ else
 fi
 
 # Load the secret env vars.
-source $DROPBOXPATH/dotfiles/secrets.sh
+if [[ -f "$DROPBOXPATH/dotfiles/secrets.sh" ]]; then
+    source "$DROPBOXPATH/dotfiles/secrets.sh"
+else
+    echo "Warning: secrets.sh not found at $DROPBOXPATH/dotfiles/secrets.sh" >&2
+    echo "         Some environment variables (e.g., ADO_TOKEN, GitHub creds) won't be loaded" >&2
+fi
 
-if hash thefuck 2>/dev/null; then
+if command -v thefuck &>/dev/null; then
     eval "$(thefuck --alias)"
 fi
 
 # Rust!
-if [ -e ~/.cargo ]; then
+if [[ -e ~/.cargo ]]; then
     export PATH="$HOME/.cargo/bin:$PATH"
 fi
 
 # For GPG signing.
-export GPG_TTY=$(tty)
+if [[ -t 0 ]]; then
+    export GPG_TTY=$(tty)
+else
+    export GPG_TTY="${GPG_TTY:-/dev/null}"
+fi

@@ -5,9 +5,6 @@
 # Main zsh config
 # ---------------------------------------
 
-# If you come from bash you might have to change your $PATH.
-export PATH=/usr/local/bin:$PATH
-
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -21,9 +18,12 @@ ENABLE_CORRECTION="true"
 # Display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
 
-# Dsable marking untracked files under VCS as dirty.
+# Disable marking untracked files under VCS as dirty.
 # This makes repository status check for large repositories much, much faster.
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Consolidate all PATH modifications for performance
+export PATH="/usr/local/bin:/opt/bin:$HOME/.local/share/fnm:$HOME/bin:$HOME/.local/bin:/snap/bin:$PATH"
 
 # ---------------------------------------
 # zsh plugins
@@ -41,9 +41,6 @@ source $ZSH/oh-my-zsh.sh
 # ---------------------------------------
 # User configuration
 # ---------------------------------------
-
-# Include /opt/bin
-export PATH=/opt/bin:$PATH
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -84,15 +81,6 @@ show_virtual_env() {
 }
 PS1='$(show_virtual_env)'$PS1
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-
-# Created by `pipx` on 2024-09-05 21:11:14
-export PATH="$PATH:$HOME/.local/bin"
-
-
 # Enable aws_completer
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit
@@ -100,21 +88,11 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 # fnm: a node manager. See: https://github.com/Schniz/fnm
 FNM_PATH="/home/brad/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="$HOME/.local/share/fnm:$PATH"
-  eval "`fnm env`"
+if [[ -d "$FNM_PATH" ]]; then
+    eval "$(fnm env)"
 fi
 
-# Add $HOME/bin to path if it exists
-if [[ -d "${HOME}/bin" ]]; then
-    export PATH=$HOME/bin:$PATH
-fi
-
-# Add snaps to the path
-export PATH=$PATH:/snap/bin
-
-# Set up bash completion
-autoload -U +X bashcompinit && bashcompinit
+# Set up Terraform completion
 complete -o nospace -C /usr/bin/terraform terraform
 
 # ---------------------------------------
