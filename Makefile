@@ -12,4 +12,5 @@ uninstall:
 	@rm -f ~/.pypirc ~/.isort.cfg ~/.node-version ~/.psqlrc
 	@rm -f ~/.irbrc ~/.gemrc ~/.rspec
 	@rm -f ~/.hgrc
+	@rm -f ~/.docker/desktop/backend.sock
 	@echo "Dotfiles uninstalled!"

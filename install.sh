@@ -43,5 +43,15 @@ if [[ -d "${HOME}/.config/opencode" ]]; then
     echo "- Linked opencode configs"
 fi
 
+# Docker Desktop MCP Toolkit symlink for WSL
+if grep -qi microsoft /proc/version 2>/dev/null; then
+    DOCKER_BACKEND_SOCK="/mnt/wsl/docker-desktop/shared-sockets/host-services/backend.sock"
+    if [[ -S "$DOCKER_BACKEND_SOCK" ]]; then
+        mkdir -p "$HOME/.docker/desktop"
+        ln -sf "$DOCKER_BACKEND_SOCK" "$HOME/.docker/desktop/backend.sock"
+        echo "- Linked Docker Desktop backend socket for MCP Toolkit"
+    fi
+fi
+
 echo "Dotfiles installed successfully!"
 echo
