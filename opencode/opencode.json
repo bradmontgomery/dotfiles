@@ -1,0 +1,36 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (local)",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "starcoder2:latest": {
+          "name": "StarCoder 2"
+        },
+        "gemma3:270m": {
+          "name": "Gemma3 270m"
+        },
+        "gemma3:1b": {
+          "name": "Gemma3 1B"
+        },
+        "gemma3:4b": {
+          "name": "Gemma3 4B"
+        },
+        "gpt-oss:latest": {
+          "name": "GPT OSS"
+        }
+      }
+    }
+  },
+  "mcp": {
+    "docker-mcp-toolkit": {
+      "enabled": true,
+      "type": "local",
+      "command": ["docker", "mcp", "gateway", "run"]
+    }
+  }
+}

@@ -4,7 +4,13 @@
 " https://github.com/junegunn/vim-plug
 "
 " Plugin configs at the BOTTOM of this file.
-
+"
+" To override settings locally, create ~/.vimrc.local
+" Examples:
+"   let g:nerdtree_auto_open = 1    " Enable NERDTree auto-open on startup
+"   colorscheme myscheme            " Use a different color scheme
+"   let mapleader = ";"             " Change leader key
+"
 filetype on
 filetype plugin on
 syntax on
@@ -135,18 +141,19 @@ call plug#end()
 " vim-airline theme.
 let g:airline_theme='molokai'
 
-" Syntastic. https://github.com/scrooloose/syntastic
-"let g:syntastic_lua_checkers=['luac']
-"let g:syntastic_javascript_checkers=['eslint']
-"let g:syntastic_javascript_checkers=['jshint']
+" Syntastic configuration (deprecated in favor of language-specific linters)
+" Commented out - use flake8, black, and eslint directly instead
 
 " NERDCommenter: https://github.com/preservim/nerdcommenter
 " no extra config enabled
 
 " NERDTree: https://github.com/preservim/nerdtree
-" NERDtree tweeks (The first 3 lines will auto-start NERDTree)
-autocmd vimenter * NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
+" Optional: Auto-start NERDTree on vim startup
+" To enable this, add to ~/.vimrc.local: let g:nerdtree_auto_open = 1
+if get(g:, 'nerdtree_auto_open', 0)
+    autocmd vimenter * NERDTree
+    autocmd vimenter * if !argc() | NERDTree | endif
+endif
 " Quit if NERDTree is the only buffer open, see: https://github.com/scrooloose/nerdtree/issues/21
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
