@@ -13,3 +13,5 @@ env38/
 env39/
 env310/
 *.egg-info/
+.claude.json
+.claude/settings.local.json
