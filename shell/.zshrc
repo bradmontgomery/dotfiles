@@ -104,5 +104,5 @@ complete -o nospace -C /usr/bin/terraform terraform
 
 # opencode
 if [[ -d "${HOME}/.opencode/bin" ]]; then
-    export PATH=/home/brad/.opencode/bin:$PATH
+    export PATH="${HOME}/.opencode/bin:$PATH"
 fi
