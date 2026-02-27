@@ -14,4 +14,5 @@ uninstall:
 	@rm -f ~/.hgrc
 	@rm -f ~/.docker/desktop/backend.sock
 	@rm -f ~/.config/opencode/opencode.json
+	@rm -f ~/.claude/settings.json
 	@echo "Dotfiles uninstalled!"
