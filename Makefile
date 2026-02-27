@@ -15,4 +15,6 @@ uninstall:
 	@rm -f ~/.docker/desktop/backend.sock
 	@rm -f ~/.config/opencode/opencode.json
 	@rm -f ~/.claude/settings.json
+	@rm -f ~/.claude/agents
+	@rm -f ~/.claude/commands
 	@echo "Dotfiles uninstalled!"

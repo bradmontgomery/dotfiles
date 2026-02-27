@@ -74,6 +74,8 @@ fi
 echo "- Linking Claude Code settings..."
 mkdir -p "${HOME}/.claude"
 safe_ln "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json" "claude settings.json" || true
+safe_ln "$DOTFILES_DIR/claude/agents" "$HOME/.claude/agents" "claude agents" || true
+safe_ln "$DOTFILES_DIR/claude/commands" "$HOME/.claude/commands" "claude commands" || true
 
 # Docker Desktop MCP Toolkit symlink for WSL
 if grep -qi microsoft /proc/version 2>/dev/null; then
