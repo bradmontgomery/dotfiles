@@ -70,6 +70,11 @@ if [[ -d "${HOME}/.config/opencode" ]]; then
     safe_ln "$DOTFILES_DIR/opencode/opencode.json" "$HOME/.config/opencode/opencode.json" "opencode.json" || true
 fi
 
+# Claude Code settings.
+echo "- Linking Claude Code settings..."
+mkdir -p "${HOME}/.claude"
+safe_ln "$DOTFILES_DIR/claude/settings.json" "$HOME/.claude/settings.json" "claude settings.json" || true
+
 # Docker Desktop MCP Toolkit symlink for WSL
 if grep -qi microsoft /proc/version 2>/dev/null; then
     echo "- Detected WSL environment..."

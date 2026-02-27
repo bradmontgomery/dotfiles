@@ -19,6 +19,8 @@ dotfiles/
 ├── dev/        # .pypirc, .isort.cfg, .node-version, .psqlrc
 ├── ruby/       # .irbrc, .gemrc, .rspec
 ├── misc/       # .hgrc
+├── claude/     # settings.json → ~/.claude/settings.json (global Claude Code settings)
+├── .claude/    # settings.local.json (project-level overrides for this repo only)
 ├── install.sh  # creates symlinks to $HOME
 └── Makefile    # install/uninstall targets
 ```
