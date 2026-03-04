@@ -20,6 +20,14 @@
       "Bash(make:*)"
     ]
   },
+<<<<<<< Updated upstream
   "effortLevel": "high",
   "model": "opus"
+=======
+  "cleanupPeriodDays": 30,
+  "statusLine": {
+    "type": "command",
+    "command": "bash /home/brad/.claude/statusline-command.sh"
+  }
+>>>>>>> Stashed changes
 }
