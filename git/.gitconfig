@@ -54,3 +54,5 @@
 	defaultBranch = main
 [credential]
 	helper = store
+[safe]
+	directory = /mnt/d/projects
