@@ -23,7 +23,7 @@ COMPLETION_WAITING_DOTS="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Consolidate all PATH modifications for performance
-export PATH="/usr/local/bin:/opt/bin:$HOME/.local/share/fnm:$HOME/bin:$HOME/.local/bin:/snap/bin:$PATH"
+export PATH="/usr/local/bin:/opt/bin:$HOME/bin:$HOME/.local/bin:/snap/bin:$PATH"
 
 # ---------------------------------------
 # zsh plugins
@@ -89,7 +89,8 @@ complete -C '/usr/local/bin/aws_completer' aws
 # fnm: a node manager. See: https://github.com/Schniz/fnm
 FNM_PATH="/home/brad/.local/share/fnm"
 if [[ -d "$FNM_PATH" ]]; then
-    eval "$(fnm env)"
+    export PATH="$FNM_PATH:$PATH"
+    eval "$(fnm env --use-on-cd --shell zsh)"
 fi
 
 # Set up Terraform completion
