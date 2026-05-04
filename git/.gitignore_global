@@ -16,3 +16,4 @@ env310/
 .claude.json
 .claude/settings.local.json
 .claude/audit-logs/*
+*.claud/settings.local.json

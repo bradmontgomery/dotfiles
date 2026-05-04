@@ -29,3 +29,4 @@ source "$HOME/.aliases"
 # Misc bash functions.
 source "$HOME/.functions"
 
+. "$HOME/.cargo/env"
