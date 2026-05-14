@@ -139,7 +139,8 @@ call plug#end()
 " ---- Plugin Configurations ------------------------
 
 " vim-airline theme.
-let g:airline_theme='molokai'
+"let g:airline_theme='molokai'
+let g:airline_theme='distinguished'
 
 " Syntastic configuration (deprecated in favor of language-specific linters)
 " Commented out - use flake8, black, and eslint directly instead
