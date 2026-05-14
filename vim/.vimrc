@@ -129,10 +129,11 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 "Plug 'scrooloose/syntastic'
+"Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
-Plug 'psf/black', { 'branch': 'stable' }
-Plug 'nvie/vim-flake8'
-Plug 'fisadev/vim-isort'
+" Python formatting/linting is handled by ruff (called directly, see below).
+" Install with: uv tool install ruff
+Plug 'l2g/vim-syntax-terraform'
 
 call plug#end()
 
@@ -165,24 +166,27 @@ let NERDTreeIgnore=['\.vim$', '\~$', '\.pyc$', '__pycache__']
 let g:ctrlp_working_path_mode = 'ra'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
 
-" Flake8 settings: Hit F8 to run flake8
-" NOTE: This requires python3-flake8 to be installed (linux)
-let g:flake8_cmd="python3 -m flake8"
-autocmd FileType python map <buffer> <F8> :call Flake8()<CR>
-autocmd BufWritePre *.py Flake8
+" Ruff -- replaces black, flake8, and isort
+" Install with: uv tool install ruff
+" F8 = lint (populates quickfix), F9 = format + fix imports
+" Auto-runs format + import-fix on save.
+function! RuffFormat() abort
+    if !executable('ruff') | return | endif
+    let l:view = winsaveview()
+    silent! execute '!ruff check --select I --fix --quiet ' . shellescape(expand('%'))
+    silent! execute '!ruff format --quiet ' . shellescape(expand('%'))
+    silent! edit!
+    call winrestview(l:view)
+    redraw!
+endfunction
 
-" vim-isort -- https://github.com/fisadev/vim-isort
-" NOTE: This requires python3-isort to be installed (linux)
-let g:vim_isort_map = ''  " no command, only on save
-let g:vim_isort_python_version = 'python3'
-autocmd BufWritePre *.py Isort
+function! RuffCheck() abort
+    if !executable('ruff') | return | endif
+    cexpr system('ruff check --output-format=concise ' . shellescape(expand('%')))
+    copen
+endfunction
 
-" Black -- Hit F9 to run & run on save
-" See editor integration docs:
-" https://black.readthedocs.io/en/stable/integrations/editors.html#vim
-let g:black_skip_string_normalization=0
-let g:black_linelength=120
-let g:black_quiet=0
-noremap <F9> :Black<CR>
-autocmd BufWritePre *.py execute ':Black'
+autocmd FileType python noremap <buffer> <F8> :call RuffCheck()<CR>
+autocmd FileType python noremap <buffer> <F9> :call RuffFormat()<CR>
+autocmd BufWritePost *.py call RuffFormat()
 
