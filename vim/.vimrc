@@ -169,15 +169,39 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)|env$'
 " Ruff -- replaces black, flake8, and isort
 " Install with: uv tool install ruff
 " F8 = lint (populates quickfix), F9 = format + fix imports
-" Auto-runs format + import-fix on save.
+" Auto-runs format + import-fix on save (in-buffer via stdin/stdout, so
+" the save is atomic -- formatted content is what gets written to disk).
 function! RuffFormat() abort
     if !executable('ruff') | return | endif
     let l:view = winsaveview()
-    silent! execute '!ruff check --select I --fix --quiet ' . shellescape(expand('%'))
-    silent! execute '!ruff format --quiet ' . shellescape(expand('%'))
-    silent! edit!
+    let l:filename = expand('%')
+    let l:input = join(getline(1, '$'), "\n") . "\n"
+
+    " Fix imports (isort equivalent) via stdin
+    let l:stdin_arg = '--stdin-filename ' . shellescape(l:filename)
+    let l:output = system('ruff check --select I --fix --quiet ' . l:stdin_arg . ' -', l:input)
+    if v:shell_error != 0
+        echohl WarningMsg | echo 'ruff check failed; skipping format' | echohl None
+        return
+    endif
+
+    " Format (black equivalent) via stdin
+    let l:output = system('ruff format --quiet ' . l:stdin_arg . ' -', l:output)
+    if v:shell_error != 0
+        echohl WarningMsg | echo 'ruff format failed' | echohl None
+        return
+    endif
+
+    " Replace buffer contents only if ruff actually changed something
+    let l:lines = split(l:output, "\n", 1)
+    if len(l:lines) > 0 && l:lines[-1] ==# ''
+        call remove(l:lines, -1)
+    endif
+    if l:lines !=# getline(1, '$')
+        silent! %delete _
+        call setline(1, l:lines)
+    endif
     call winrestview(l:view)
-    redraw!
 endfunction
 
 function! RuffCheck() abort
@@ -188,5 +212,5 @@ endfunction
 
 autocmd FileType python noremap <buffer> <F8> :call RuffCheck()<CR>
 autocmd FileType python noremap <buffer> <F9> :call RuffFormat()<CR>
-autocmd BufWritePost *.py call RuffFormat()
+autocmd BufWritePre *.py call RuffFormat()
 
