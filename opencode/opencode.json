@@ -8,20 +8,17 @@
         "baseURL": "http://localhost:11434/v1"
       },
       "models": {
-        "starcoder2:latest": {
-          "name": "StarCoder 2"
+        "qwen3.5:latest": {
+          "name": "Qwen 3.5"
         },
-        "gemma3:270m": {
-          "name": "Gemma3 270m"
+        "qwen2.5:7b": {
+          "name": "Qwen 2.5 7b"
         },
-        "gemma3:1b": {
-          "name": "Gemma3 1B"
+        "nemotron-3-nano:30b": {
+          "name": "Nemotron 3 nano 30b"
         },
-        "gemma3:4b": {
-          "name": "Gemma3 4B"
-        },
-        "gpt-oss:latest": {
-          "name": "GPT OSS"
+        "devstral-small-2:latest": {
+          "name": "Devstral Small 2"
         }
       }
     }
